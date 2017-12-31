@@ -1,0 +1,21 @@
+<mat-card class="item-card">
+    <div>
+        <p role="listitem">{{dispute.name}}</p>
+        <p role="listitem">{{dispute.date}}</p>
+    </div>
+    <div>
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item style="color: blue" (click)="openDialogEdit()">
+                <mat-icon>mode_edit</mat-icon>
+                <span>Edit</span>
+            </button>
+            <button mat-menu-item style="color: red" (click)="openDialogDelete()">
+                <mat-icon>delete</mat-icon>
+                <span>Delete</span>
+            </button>
+        </mat-menu>
+    </div>
+</mat-card>
