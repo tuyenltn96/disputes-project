@@ -1,3 +1,29 @@
+<<<<<<< HEAD
 item item
 <p>{{dispute.name}}</p>
 <p>{{dispute.date}}</p>
+=======
+<mat-list class="items-list" role="list" *ngFor="let item of disputes">
+    <mat-card class="item-card">
+        <div>
+            <p role="listitem">{{item.name}}</p>
+            <p role="listitem">{{item.date}}</p>
+        </div>
+        <div>
+            <button mat-icon-button [matMenuTriggerFor]="menu">
+                <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item style="color: blue" (click)="openDialogEdit()">
+                    <mat-icon color="primary">mode_edit</mat-icon>
+                    <span>Edit</span>
+                </button>
+                <button mat-menu-item style="color: red" (click)="openDialogDelete()">
+                    <mat-icon color="warn">delete</mat-icon>
+                    <span>Delete</span>
+                </button>
+            </mat-menu>
+        </div>
+    </mat-card>
+</mat-list>
+>>>>>>> e3929aafe5a1a9d30c2f1cd6b03c86e40d0a1784
