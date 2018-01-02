@@ -1,37 +1,41 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
-import { ReactiveFormsModule, NgModel } from '@angular/forms';
+import { ReactiveFormsModule, NgModel, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 
-import * as  fromComponents from './components';
-import * as fromContainers from './containers';
-import { effects, reducers } from './store';
+import * as  fromComponents from './components/dispute-item/dispute-item.component';
+import * as fromContainers from './containers/disputes/disputes.component';
+import { effects, reducers } from '../app/_store/index';
 
 import { ROUTES } from '../disputes/disputes.routing';
+import { SharedModule } from '../shared/shared.module';
+import { DeleteDialogComponent } from './components/delete-dialog/delete-dialog.component';
+import { EditDialogComponent } from './components/edit-dialog/edit-dialog.component';
+import { DisputesService } from './services/disputes.service';
+import { CreateDialogComponent } from './containers/create-dialog/create-dialog.component';
 
-import * as fromServices from './services';
 @NgModule({
     imports: [
         CommonModule,
-        ReactiveFormsModule,
+        SharedModule,
         HttpClientModule,
         RouterModule.forChild(ROUTES),
         StoreModule.forFeature('disputes', reducers),
         EffectsModule.forFeature(effects)
     ],
     declarations: [
-        ...fromContainers.containers,
-        ...fromComponents.components
+        fromContainers.DisputesComponent,
+        fromComponents.DisputeItemComponent,
+        DeleteDialogComponent,
+        EditDialogComponent,
+        CreateDialogComponent
     ],
-    providers: [...fromServices.service],
-    exports: [
-            ...fromComponents.components,
-            ...fromContainers.containers
-    ]
+    bootstrap: [DeleteDialogComponent, EditDialogComponent, CreateDialogComponent],
+    providers: [DisputesService]
 })
 export class DisputesModule { }
 
