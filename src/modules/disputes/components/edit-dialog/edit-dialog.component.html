@@ -1,14 +1,14 @@
 <mat-card-content>
     <form>
-        <mat-form-field fxLayout="row" fxLayoutAlign="center center">
+        <mat-form-field class="form-list" fxLayout="row" fxLayoutAlign="center center">
             <input matInput placeholder="Name" name="name" value="Item 1">
         </mat-form-field>
-        <mat-form-field fxLayout="row" fxLayoutAlign="center center">
+        <mat-form-field class="form-list" fxLayout="row" fxLayoutAlign="center center">
             <input matInput placeholder="Date" name="date" value="12/24/2017">
         </mat-form-field>
-        <div mat-dialog-actions fxLayout="row" fxLayoutAlign="end center">
+        <div class="form-list" mat-dialog-actions fxLayout="row" fxLayoutAlign="end center">
             <button mat-button color="warn" (click)="onNoClick()" tabindex="-1">CANCEL</button>
-            <button mat-raised-button color="primary" [mat-dialog-close]="data" cdkFocusInitial>OK</button>
+            <button mat-raised-button color="primary" [mat-dialog-close]="items" cdkFocusInitial>OK</button>
         </div>
     </form>
 </mat-card-content>

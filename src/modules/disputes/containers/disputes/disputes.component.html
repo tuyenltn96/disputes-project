@@ -12,15 +12,15 @@
                 </div>
             </div>
         </mat-toolbar>
-        
+
         <div class="page-content">
             <router-outlet></router-outlet>
         </div>
     </div>
-    <button mat-fab color="primary" class="btn-create">
+    <button mat-fab color="primary" class="btn-create" (click)="openDialogCreate()">
         <mat-icon>add</mat-icon>
     </button>
     <div class="item-list">
-        <disputes-list></disputes-list>
+        <disputes-list [disputes]="disputes"></disputes-list>
     </div>
 </mat-sidenav-container>

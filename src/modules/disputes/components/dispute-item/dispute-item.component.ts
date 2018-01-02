@@ -1,9 +1,9 @@
 import { Component, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
-import { DisputeDeleteComponent } from '../dispute-delete/dispute-delete.component';
-import { DisputeEditComponent } from '../dispute-edit/dispute-edit.component';
 import { Dispute } from '../../models/dispute.model';
+import { EditDialogComponent } from '../edit-dialog/edit-dialog.component';
+import { DeleteDialogComponent } from '../delete-dialog/delete-dialog.component';
 
 @Component({
     // tslint:disable-next-line:component-selector
@@ -19,14 +19,14 @@ export class DisputeItemComponent {
     constructor(public dialog: MatDialog) { }
 
     openDialogDelete(): void {
-        const dialogRef = this.dialog.open(DisputeDeleteComponent, {
+        const dialogRef = this.dialog.open(DeleteDialogComponent, {
             width: '280px',
             data: {}
         });
     }
 
     openDialogEdit(): void {
-        const dialogRef = this.dialog.open(DisputeEditComponent, {
+        const dialogRef = this.dialog.open(EditDialogComponent, {
             width: '280px',
             data: {}
         });

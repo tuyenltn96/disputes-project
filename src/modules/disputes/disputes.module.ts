@@ -13,13 +13,14 @@ import { effects, reducers } from '../app/_store/index';
 
 import { ROUTES } from '../disputes/disputes.routing';
 import { SharedModule } from '../shared/shared.module';
-import { DisputeDeleteComponent } from './components/dispute-delete/dispute-delete.component';
-import { DisputeEditComponent } from './components/dispute-edit/dispute-edit.component';
+import { DeleteDialogComponent } from './components/delete-dialog/delete-dialog.component';
+import { EditDialogComponent } from './components/edit-dialog/edit-dialog.component';
 import { DisputesListComponent } from './components/disputes-list/disputes-list.component';
+import { DisputesService } from './services/disputes.service';
+import { CreateDialogComponent } from './containers/create-dialog/create-dialog.component';
 
 @NgModule({
     imports: [
-        FormsModule,
         CommonModule,
         SharedModule,
         HttpClientModule,
@@ -30,11 +31,13 @@ import { DisputesListComponent } from './components/disputes-list/disputes-list.
     declarations: [
         fromContainers.DisputesComponent,
         fromComponents.DisputeItemComponent,
-        DisputeDeleteComponent,
-        DisputeEditComponent,
-        DisputesListComponent
+        DeleteDialogComponent,
+        EditDialogComponent,
+        DisputesListComponent,
+        CreateDialogComponent
     ],
-    bootstrap: [DisputeDeleteComponent, DisputeEditComponent, DisputesListComponent]
+    bootstrap: [DeleteDialogComponent, EditDialogComponent, DisputesListComponent, CreateDialogComponent],
+    providers: [DisputesService]
 })
 export class DisputesModule { }
 
