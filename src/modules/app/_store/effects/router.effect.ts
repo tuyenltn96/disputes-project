@@ -11,26 +11,5 @@ import { tap, map } from 'rxjs/operators';
 export class RouterEffects {
 
     constructor(
-        private action$: Actions,
-        private router: Router,
-        private location: Location
-    ) { }
-    @Effect({ dispatch: false })
-    navigate$ = this.action$
-    .ofType(RouterActions.GO)
-    .pipe(
-        map((action: RouterActions.Go) => action.payload),
-        tap(({ path, query: queryParams, extras }) => {
-            this.router.navigate(path, { queryParams, ...extras });
-        })
-    );
-    @Effect({ dispatch: false })
-    navigateBack$ = this.action$
-        .ofType(RouterActions.BACK)
-        .pipe(tap(() => this.location.back()));
-
-    @Effect({ dispatch: false })
-    navigateForward$ = this.action$
-        .ofType(RouterActions.FORWARD)
-        .pipe(tap(() => this.location.forward()));
+    ) {}
 }

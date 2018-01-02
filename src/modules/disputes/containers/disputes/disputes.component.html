@@ -1,0 +1,9 @@
+<!-- <div *ngIf="!((disputes$ | async)?length)">
+    k co dispute nao
+</div> -->
+
+<dispute-item
+    *ngFor="let dispute of (disputes$ | async)"
+    [dispute] ="dispute"
+>
+</dispute-item>
