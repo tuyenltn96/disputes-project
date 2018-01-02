@@ -13,18 +13,18 @@ import * as fromContainers from './containers';
 import { reducers, effects, CustomSerializer } from './_store';
 import { ROUTES } from './app.routing';
 import { environment } from '../../environments/environment';
-
-import { SharedModule } from '../shared/shared.module';
+import { HttpClientModule } from '@angular/common/http';
 
 export const metaReducers: MetaReducer<any>[] = !environment.production ? [storeFreeze] : [];
 
 
 @NgModule({
   imports: [
-    SharedModule,
     BrowserModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(ROUTES),
+
     StoreModule.forRoot(reducers, { metaReducers }),
     EffectsModule.forRoot(effects),
     StoreRouterConnectingModule,
