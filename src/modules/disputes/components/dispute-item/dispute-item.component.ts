@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, Input } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 import { Dispute } from '../../models/dispute.model';
@@ -12,23 +12,21 @@ import { DeleteDialogComponent } from '../delete-dialog/delete-dialog.component'
     styleUrls: ['./dispute-item.component.scss']
 })
 export class DisputeItemComponent {
+    @Input() disputes: Dispute;
 
-
-
-    public dispute: Dispute = { id: '1', name: 'Item 1', date: '24/12/2017'};
     constructor(public dialog: MatDialog) { }
 
     openDialogDelete(): void {
         const dialogRef = this.dialog.open(DeleteDialogComponent, {
             width: '280px',
-            data: {}
+            data: this.disputes
         });
     }
 
     openDialogEdit(): void {
         const dialogRef = this.dialog.open(EditDialogComponent, {
             width: '280px',
-            data: {}
+            data: this.disputes
         });
     }
 }

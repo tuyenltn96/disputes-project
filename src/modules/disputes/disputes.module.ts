@@ -15,7 +15,6 @@ import { ROUTES } from '../disputes/disputes.routing';
 import { SharedModule } from '../shared/shared.module';
 import { DeleteDialogComponent } from './components/delete-dialog/delete-dialog.component';
 import { EditDialogComponent } from './components/edit-dialog/edit-dialog.component';
-import { DisputesListComponent } from './components/disputes-list/disputes-list.component';
 import { DisputesService } from './services/disputes.service';
 import { CreateDialogComponent } from './containers/create-dialog/create-dialog.component';
 
@@ -33,10 +32,9 @@ import { CreateDialogComponent } from './containers/create-dialog/create-dialog.
         fromComponents.DisputeItemComponent,
         DeleteDialogComponent,
         EditDialogComponent,
-        DisputesListComponent,
         CreateDialogComponent
     ],
-    bootstrap: [DeleteDialogComponent, EditDialogComponent, DisputesListComponent, CreateDialogComponent],
+    bootstrap: [DeleteDialogComponent, EditDialogComponent, CreateDialogComponent],
     providers: [DisputesService]
 })
 export class DisputesModule { }
