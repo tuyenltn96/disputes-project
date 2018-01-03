@@ -1,8 +1,8 @@
-<mat-list class="items-list" role="list" *ngFor="let item of disputes">
+<mat-list class="items-list" role="list">
     <mat-card class="item-card">
         <div>
-            <p role="listitem">{{item.name}}</p>
-            <p role="listitem">{{item.date}}</p>
+            <p role="listitem">{{dispute.name}}</p>
+            <p role="listitem">{{dispute.date}}</p>
         </div>
         <div>
             <button mat-icon-button [matMenuTriggerFor]="menu">

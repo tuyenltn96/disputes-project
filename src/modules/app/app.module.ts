@@ -13,6 +13,7 @@ import * as fromContainers from './containers';
 import { reducers, effects, CustomSerializer } from './_store';
 import { ROUTES } from './app.routing';
 import { environment } from '../../environments/environment';
+import { HttpClientModule } from '@angular/common/http';
 
 import { SharedModule } from '../shared/shared.module';
 
