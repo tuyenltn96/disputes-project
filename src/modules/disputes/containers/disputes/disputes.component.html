@@ -1,9 +1,26 @@
-<!-- <div *ngIf="!((disputes$ | async)?length)">
-    k co dispute nao
-</div> -->
-iii
-<dispute-item
-    *ngFor="let dispute of (disputes$ | async)"
-    [dispute] ="dispute"
->
-</dispute-item>
+<mat-sidenav-container fullscreen>
+    <div>
+        <mat-toolbar color="black" class="header">
+            <div class="toolbar">
+                <div class="header-left">
+                    <img class="image" src="./assets/images/icon.png">
+                    <h1>MISO</h1>
+                </div>
+
+                <div class="dv-btn-logout">
+                    <button class="btn-logout" mat-button (click)="auth.logout()">Logout</button>
+                </div>
+            </div>
+        </mat-toolbar>
+
+        <div class="page-content">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+    <button mat-fab color="primary" class="btn-create" (click)="openDialogCreate()">
+        <mat-icon>add</mat-icon>
+    </button>
+    <div class="item-list">
+        <dispute-item [disputes]="disputes"></dispute-item>
+    </div>
+</mat-sidenav-container>

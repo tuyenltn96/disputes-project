@@ -1,0 +1,7 @@
+<div mat-dialog-content class="form-list">
+  <h4>DO YOU WANT TO DELETE?</h4>
+</div>
+<div mat-dialog-actions class="form-list">
+  <button mat-button color="primary" (click)="onNoClick()">CANCEL</button>
+  <button mat-button color="warn" [mat-dialog-close]="data.animal" cdkFocusInitial>DELETE</button>
+</div>
