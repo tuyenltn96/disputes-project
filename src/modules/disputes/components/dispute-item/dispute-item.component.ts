@@ -6,7 +6,6 @@ import { EditDialogComponent } from '../edit-dialog/edit-dialog.component';
 import { DeleteDialogComponent } from '../delete-dialog/delete-dialog.component';
 
 @Component({
-    // tslint:disable-next-line:component-selector
     selector: 'dispute-item',
     templateUrl: './dispute-item.component.html',
     styleUrls: ['./dispute-item.component.scss']
