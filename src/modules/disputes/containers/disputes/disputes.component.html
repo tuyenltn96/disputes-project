@@ -22,7 +22,10 @@
     </button>
     <div class="item-list" style="flex-direction: column">
 
-        <dispute-item *ngFor="let dispute of (disputes$ | async)" [dispute]="dispute">
+        <dispute-item *ngFor="let dispute of (disputes$ | async)" 
+        (remove)="onRemove(dispute)" 
+        (update)="onUpdate($event)" 
+        [dispute]="dispute">
         </dispute-item>
     </div>
 </mat-sidenav-container>

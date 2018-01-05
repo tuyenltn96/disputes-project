@@ -2,3 +2,29 @@
     display: flex;
     justify-content: center;
 }
+:host {
+    .header {
+      position: relative;
+  
+      button[mat-dialog-close] {
+        position: absolute;
+        top: -16px;
+        right: -16px;
+      }
+    }
+  
+    mat-dialog-actions {
+      button {
+        margin-left: 16px;
+  
+        &:first-child {
+          margin-left: 0;
+        }
+      }
+    }
+  }
+
+.button {
+  display: flex;
+  justify-content: flex-end;
+}

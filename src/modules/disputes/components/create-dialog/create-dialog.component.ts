@@ -9,14 +9,6 @@ import { Dispute } from '../../models/dispute.model';
 
 export class CreateDialogComponent {
 
-    // @Input() data1: Dispute;
-
-    constructor(
-        public dialogRef: MatDialogRef<CreateDialogComponent>,
-        @Inject(MAT_DIALOG_DATA) public data: any) { }
-
-    onNoClick(): void {
-        this.dialogRef.close();
-    }
+    dispute: Dispute = {};
 
 }
