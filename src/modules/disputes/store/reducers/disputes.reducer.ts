@@ -51,6 +51,33 @@ export function reducer(
                 loaded: false
             };
         }
+
+        case fromDisputes.REMOVE_DISPUTE_SUCCESS: {
+            const dispute = action.payload;
+            const { [dispute.id]: removed, ...entities } = state.entities;
+            return {
+                ...state,
+                entities,
+            };
+        }
+
+        case fromDisputes.CREATE_DISPUTES_SUCCESS:
+        case fromDisputes.UPDATE_DISPUTE_SUCCESS: {
+            const dispute = action.payload;
+            const entities = {
+                ...state.entities,
+                [dispute.id]: dispute
+            };
+
+            return {
+                ...state,
+                entities
+            };
+        }
+
+        default: {
+            return state;
+        }
     }
 }
 

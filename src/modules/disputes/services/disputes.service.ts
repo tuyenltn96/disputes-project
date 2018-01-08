@@ -23,14 +23,13 @@ export class DisputesService {
     }
     updateDispute(payload: Dispute): Observable<Dispute> {
         return this.http
-            .put<Dispute>(`http://localhost:3000/dispute/${payload.id}`, payload)
+            .put<Dispute>(`http://localhost:3000/disputes/${payload.id}`, payload)
             .pipe(catchError((error: any) => Observable.throw(error.json())));
-
     }
     removeDispute(payload: Dispute): Observable<Dispute> {
         return this.http
-            .delete<any>(`http://localhost:3000/dispute/${payload.id}`)
-            .pipe(catchError((error: any) => Observable.throw(error.json())));
+        .delete<Dispute>(`http://localhost:3000/disputes/${payload.id}`)
+        .pipe(catchError((error: any) => Observable.throw(error.json())));
     }
 
 }
