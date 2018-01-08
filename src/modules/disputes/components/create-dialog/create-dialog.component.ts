@@ -10,5 +10,11 @@ import { Dispute } from '../../models/dispute.model';
 export class CreateDialogComponent {
 
     dispute: Dispute = {};
+    constructor(
+        public dialogRef: MatDialogRef<CreateDialogComponent>) { }
 
+    onSubmit() {
+        this.dialogRef.close(this.dispute);
+    }
 }
+

@@ -12,20 +12,15 @@
                 </div>
             </div>
         </mat-toolbar>
-
         <div class="page-content">
             <router-outlet></router-outlet>
         </div>
     </div>
-    <button mat-fab color="primary" class="btn-create" (click)="openDialogCreate()">
-        <mat-icon>add</mat-icon>
-    </button>
     <div class="item-list" style="flex-direction: column">
-
-        <dispute-item *ngFor="let dispute of (disputes$ | async)" 
-        (remove)="onRemove(dispute)" 
-        (update)="onUpdate($event)" 
-        [dispute]="dispute">
+        <button mat-fab color="primary" class="btn-create" (click)="openDialogCreate()">
+            <mat-icon>add</mat-icon>
+        </button>
+        <dispute-item *ngFor="let dispute of (disputes$ | async)" (remove)="onRemove(dispute)" (update)="onUpdate($event)" [dispute]="dispute">
         </dispute-item>
     </div>
 </mat-sidenav-container>

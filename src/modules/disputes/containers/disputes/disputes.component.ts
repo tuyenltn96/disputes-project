@@ -27,7 +27,8 @@ export class DisputesComponent implements OnInit {
 
   openDialogCreate(): void {
     const dialogRef = this.dialog.open(CreateDialogComponent, {
-      width: '280px'
+      width: '330px',
+      disableClose: true
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result) {

@@ -13,7 +13,7 @@ export class EditDialogComponent {
         public dialogRef: MatDialogRef<EditDialogComponent>,
         @Inject(MAT_DIALOG_DATA) public dispute: Dispute) { }
 
-        onSubmit() {
-            this.dialogRef.close(this.dispute);
-        }
+    onSubmit() {
+        this.dialogRef.close(this.dispute);
+    }
 }

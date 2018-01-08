@@ -25,7 +25,9 @@ export class DisputeItemComponent {
 
     openDialogDelete(): void {
         const dialogRef = this.dialog.open(DeleteDialogComponent, {
-            width: '280px'
+            width: '330px',
+            disableClose: true,
+            data: { ...this.dispute}
         });
         dialogRef.afterClosed().subscribe(result => {
             if (result === true) {
@@ -36,7 +38,8 @@ export class DisputeItemComponent {
 
     openDialogEdit(): void {
         const dialogRef = this.dialog.open(EditDialogComponent, {
-            width: '280px',
+            width: '330px',
+            disableClose: true,
             data: { ...this.dispute }
         });
         dialogRef.afterClosed().subscribe(result => {

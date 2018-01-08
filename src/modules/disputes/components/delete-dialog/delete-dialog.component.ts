@@ -11,7 +11,7 @@ import { Dispute } from '../../models/dispute.model';
 export class DeleteDialogComponent {
     constructor(
         public dialogRef: MatDialogRef<DeleteDialogComponent>,
-        @Inject(MAT_DIALOG_DATA) public dispute: Dispute) { }
+        @Inject(MAT_DIALOG_DATA) public data: any) { }
 
 }
 

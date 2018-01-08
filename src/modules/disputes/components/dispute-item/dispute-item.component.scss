@@ -1,14 +1,25 @@
 .item-card {
   width: 750px;
-  height: 50px;
+  height: 30px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  cursor: pointer;
+}
+
+.item-card:hover {
+  background-color: lightgray;
 }
 
 .items-list {
-  padding-bottom: 30px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 10px;
   display: flex;
   justify-content: center;
+}
+
+.ng-binding {
+  color: rgb(158, 157, 157);
 }
 

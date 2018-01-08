@@ -1,8 +1,8 @@
 <mat-list class="items-list" role="list">
     <mat-card class="item-card">
         <div>
-            <p role="listitem">{{dispute.name}}</p>
-            <p role="listitem">{{dispute.date | date:'dd/MM/yyyy' }}</p>
+            <p>{{dispute.name}}</p>
+            <small class="ng-binding" role="listitem">{{dispute.date | date:'dd/MM/yyyy' }}</small>
         </div>
         <div>
             <button mat-icon-button [matMenuTriggerFor]="menu">

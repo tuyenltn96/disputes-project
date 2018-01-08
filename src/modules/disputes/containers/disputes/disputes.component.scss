@@ -17,7 +17,7 @@
   .mat-icon {
     cursor: pointer;
   }
-  .toolbar {
+  .toolbar {  
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -35,11 +35,25 @@ h1 {
   box-sizing: border-box;
 }
 
-.btn-create {
-  top: 33px;
-  left: 160px;
-  position: absolute;
-  z-index: 2;
+@media (min-width: 768px) and (max-width: 1440px) {
+  .btn-create {
+    top: -30px;
+    left: 155px;
+    position: absolute;
+    z-index: 2;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+  .btn-create {    
+    bottom: 20px;
+    right: 20px;
+    position: fixed;
+    z-index: 2;
+  }
+}
+.btn-create:hover {
+  background-color: rgb(74, 74, 211);
 }
 
 .header {
@@ -59,7 +73,10 @@ h1 {
 }
 
 .item-list {
+  position: relative;
   display: flex;
   justify-content: center;
   padding-top: 30px;
 }
+
+

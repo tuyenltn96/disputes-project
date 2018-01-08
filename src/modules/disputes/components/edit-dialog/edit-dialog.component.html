@@ -1,9 +1,11 @@
-<form (ngSubmit)="onSubmit()">
-    <mat-form-field class="form-list" fxLayout="row" fxLayoutAlign="center center">
-        <input matInput placeholder="Name" name="name" [(ngModel)]="dispute.name">
+<form #f="ngForm" (ngSubmit)="onSubmit()">
+    <h2 mat-dialog-title>Edit Dispute</h2>
+    <mat-form-field>
+        <input #input maxlength="50" cdkFocusInitial matInput placeholder="Name" name="name" [(ngModel)]="dispute.name" required>
+        <mat-hint align="end">{{input.value?.length || 0}}/50</mat-hint>
     </mat-form-field>
-    <div class="form-list" mat-dialog-actions fxLayout="row" fxLayoutAlign="end center">
-        <button type="button" mat-button color="warn" mat-dialog-close>CANCEL</button>
-        <button type="submit" mat-raised-button color="primary">OK</button>
+    <div class="form-list-button" mat-dialog-actions>
+        <button type="button" mat-button mat-dialog-close>CANCEL</button>
+        <button type="submit" mat-raised-button color="primary" cdkFocusInitial [disabled]="f.invalid">OK</button>
     </div>
 </form>
