@@ -1,4 +1,4 @@
-import { Component, OnInit,ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { Observable } from 'rxjs/Observable';
 import { Issue } from '../../models/issue.model';
@@ -22,8 +22,8 @@ export class IssuesComponent implements OnInit {
     private store: Store<fromStoreIssue.DisputesState>, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.route.params.subscribe(params  => {
-     const disputeId = params['id'];
+    this.route.params.subscribe(params => {
+      const disputeId = params['id'];
       this.store.dispatch(new fromStoreIssue.LoadIssues(disputeId));
     });
     this.issue$ = this.store.select(fromStoreIssue.getIssuesByDisputeId);
