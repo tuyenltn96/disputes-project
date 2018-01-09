@@ -6,5 +6,9 @@ export const ROUTES: Routes = [
     {
         path: '',
         component: fromContainers.DisputesComponent,
+    },
+    {
+        path: ':id',
+        loadChildren: '../issues/issues.module#IssuesModule'
     }
 ];

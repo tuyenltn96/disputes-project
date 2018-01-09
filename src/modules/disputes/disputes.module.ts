@@ -10,10 +10,10 @@ import { EffectsModule } from '@ngrx/effects';
 import * as  fromComponents from './components';
 import * as fromContainers from './containers';
 import { effects, reducers } from './store';
+import * as fromServices from './services';
 
 import { ROUTES } from '../disputes/disputes.routing';
 
-import * as fromServices from './services';
 
 import { DeleteDialogComponent } from './components/delete-dialog/delete-dialog.component';
 import { EditDialogComponent } from './components/edit-dialog/edit-dialog.component';

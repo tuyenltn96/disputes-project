@@ -6,7 +6,6 @@ import * as fromStore from '../../store';
 
 import { Dispute } from '../../models/dispute.model';
 import { MatDialog } from '@angular/material';
-import { toPayload } from '@ngrx/effects/src/util';
 import { CreateDialogComponent } from '../../components/create-dialog/create-dialog.component';
 
 @Component({

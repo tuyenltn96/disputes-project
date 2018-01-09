@@ -1,3 +1,8 @@
 <p>
   issues works!
 </p>
+<app-issues-item
+*ngFor="let issue of (issue$ | async)"
+[issue]="issue"
+>
+</app-issues-item>

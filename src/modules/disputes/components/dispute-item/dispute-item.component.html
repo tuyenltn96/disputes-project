@@ -1,6 +1,6 @@
 <mat-list class="items-list" role="list">
     <mat-card class="item-card" >
-        <div>
+        <div [routerLink]="['/disputes', dispute.id]" >
             <p role="listitem">{{dispute.name}}</p>
             <small class="text-color"  role="listitem">{{dispute.date | date:'dd/MM/yyyy' }}</small>
         </div>

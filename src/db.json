@@ -38,7 +38,34 @@
     {
       "name": "hoa mat",
       "date": "1515380515978",
-      "id": "PiR1UAq"
+      "id": "PiR1UAq",
+      "issues":{
+        "id":"1",
+        "name": "issues1"
+      }
+    }
+  ],
+  "issues":[
+    {
+      "id":"1",
+      "name": "cat hoa",
+      "idDispute": "W4bWdCq"
+    },
+    {
+      "id":"2",
+      "name": "trong cay",
+      "idDispute": "W4bWdCq"
+    }
+    ,
+    {
+      "id":"3",
+      "name": "nho co",
+      "idDispute": "gYyceAc"
+    },
+    {
+      "id":"4",
+      "name": "bat sau",
+      "idDispute": "le5XrOZ"
     }
   ]
 }
