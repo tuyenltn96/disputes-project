@@ -1,0 +1,37 @@
+.item-card {
+    width: 750px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    }
+  .item-card:hover{
+    background-color: lightgray;
+    // background: transparent;
+    // transition: box-shadow 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), background-color 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  
+  }
+  
+  .items-list {
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    display: flex;
+    justify-content: center;
+  }
+  .date{
+    font-size: small;
+  }
+  .text-color{
+    color: rgba(88, 88, 88, 0.3);
+  }
+
+.sidenav {
+  width: 300px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+  

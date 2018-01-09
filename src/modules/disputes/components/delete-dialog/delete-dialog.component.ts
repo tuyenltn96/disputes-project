@@ -5,7 +5,7 @@ import { Dispute } from '../../models/dispute.model';
 
 @Component({
     templateUrl: './delete-dialog.component.html',
-    styleUrls: ['./delete-dialog.component.scss']
+    styleUrls: ['delete-dialog.component.scss']
 })
 
 export class DeleteDialogComponent {

@@ -4,7 +4,7 @@ import { Dispute } from '../../models/dispute.model';
 
 @Component({
     templateUrl: './create-dialog.component.html',
-    styleUrls: ['./create-dialog.component.scss']
+    styleUrls: ['create-dialog.component.scss']
 })
 
 export class CreateDialogComponent {

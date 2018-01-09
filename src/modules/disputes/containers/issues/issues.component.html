@@ -1,0 +1,41 @@
+<mat-sidenav-container fullscreen>
+  <div>
+    <mat-toolbar color="black" class="header">
+      <div class="toolbar">
+        <div class="header-left">
+          <a routerLink="">
+            <i class="material-icons">keyboard_backspace</i>
+          </a>
+          <h1>item1</h1>
+        </div>
+
+        <div class="dv-btn-logout">
+          <button class="btn-logout" mat-button (click)="auth.logout()">Logout</button>
+        </div>
+      </div>
+    </mat-toolbar>
+    <mat-toolbar class="header2">
+      <div class="toolbar">
+        <div class="header-left">
+          <h1>Issues</h1>
+        </div>
+        <div class="header-right">
+          <button class="issue_button" mat-raised-button (click)="openDialogCreate()"><i class="material-icons add_icon">add</i>
+            NEW ISSUE
+          </button>
+          <i class="material-icons print_icon">print</i>
+        </div>
+      </div>
+    </mat-toolbar>
+    <div class="page-content">
+    </div>
+  </div>
+  <div>
+  <!-- <div class="item-list" style="flex-direction: column"> -->
+      <!-- <app-sidenav-issue *ngFor="let issue of (issues$ | async)" [issue]="issue"></app-sidenav-issue> -->
+    <app-issues-item *ngFor="let issue of (issue$ | async)"
+     (remove)="onRemove(issue)"
+    (update)="onUpdate($event)"
+     [issue]="issue"></app-issues-item>
+  </div>
+</mat-sidenav-container>

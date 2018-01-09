@@ -1,8 +1,7 @@
 <mat-list class="items-list" role="list">
     <mat-card class="item-card">
-        <div [routerLink]="['/disputes', dispute.id, 'issues']">
-            <p role="listitem">{{dispute.name}}</p>
-            <small class="text-color" role="listitem">{{dispute.date | date:'dd/MM/yyyy' }}</small>
+        <div>
+            <p role="listitem">{{issue.name}}</p>
         </div>
         <div>
             <button mat-icon-button [matMenuTriggerFor]="menu">
@@ -11,7 +10,7 @@
             <mat-menu #menu="matMenu">
                 <button mat-menu-item style="color: blue" (click)="openDialogEdit()">
                     <mat-icon color="primary">mode_edit</mat-icon>
-                    <span>Edit</span>
+                    <span>Rename</span>
                 </button>
                 <button mat-menu-item style="color: red" (click)="openDialogDelete()">
                     <mat-icon color="warn">delete</mat-icon>
@@ -21,4 +20,3 @@
         </div>
     </mat-card>
 </mat-list>
-

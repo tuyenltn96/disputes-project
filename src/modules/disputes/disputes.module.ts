@@ -19,6 +19,7 @@ import { DeleteDialogComponent } from './components/delete-dialog/delete-dialog.
 import { EditDialogComponent } from './components/edit-dialog/edit-dialog.component';
 import { DisputesService } from './services/disputes.service';
 import { SharedModule } from '../shared/shared.module';
+import { SidenavIssueComponent } from './components/sidenav-issue/sidenav-issue.component';
 
 @NgModule({
     imports: [
@@ -35,12 +36,21 @@ import { SharedModule } from '../shared/shared.module';
         fromComponents.DisputeItemComponent,
         fromComponents.DeleteDialogComponent,
         fromComponents.EditDialogComponent,
-        fromComponents.CreateDialogComponent
+        fromComponents.CreateDialogComponent,
+        fromContainers.IssuesComponent,
+        fromComponents.IssuesItemComponent,
+        fromComponents.IssueDeleteDialogComponent,
+        fromComponents.IssueEditDialogComponent,
+        fromComponents.IssueCreateDialogComponent,
+        fromComponents.SidenavIssueComponent
     ],
     entryComponents: [
         fromComponents.CreateDialogComponent,
         fromComponents.DeleteDialogComponent,
-        fromComponents.EditDialogComponent
+        fromComponents.EditDialogComponent,
+        fromComponents.IssueCreateDialogComponent,
+        fromComponents.IssueDeleteDialogComponent,
+        fromComponents.IssueEditDialogComponent
     ],
     providers: [...fromServices.service]
 })

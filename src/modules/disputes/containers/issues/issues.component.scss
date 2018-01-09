@@ -1,0 +1,73 @@
+.mat-toolbar {
+.mat-icon {
+    cursor: pointer;
+    }
+    .toolbar { 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    }
+   }
+   
+   h1 {
+    font-size: 20px;
+   }
+   
+   .page-content {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+   }
+   
+   .btn-create:hover {
+    background-color: rgb(74, 74, 211);
+   }
+   
+   .header2 {
+    background-color: rgb(231, 229, 229);
+    color: black;
+   }
+
+   .header {
+    background-color: rgb(31, 29, 29);
+    color: white;
+   }
+   
+   .header-left {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+   }
+
+   .header-right {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+   }
+   
+   .item-list {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    padding-top: 30px;
+   }
+
+   .material-icons {
+       padding-right: 10px;
+       color: white;
+   }
+
+   .issue_button {
+    width: 130px;
+    height: 40px;
+   }
+
+   .add_icon {
+    color: black;
+   }
+
+   .print_icon {
+       color: black;
+       padding-left: 15px;
+   }
