@@ -19,9 +19,9 @@ export class LoadDisputesSuccess implements Action {
     constructor(public payload: Dispute[]) { }
 }
 
-export const REMOVE_DISPUTE = '[Products] Remove Dispute';
-export const REMOVE_DISPUTE_FAIL = '[Products] Remove Dispute Fail';
-export const REMOVE_DISPUTE_SUCCESS = '[Products] Remove Dispute Success';
+export const REMOVE_DISPUTE = '[disputes] Remove Dispute';
+export const REMOVE_DISPUTE_FAIL = '[disputes] Remove Dispute Fail';
+export const REMOVE_DISPUTE_SUCCESS = '[disputes] Remove Dispute Success';
 
 export class RemoveDispute implements Action {
     readonly type = REMOVE_DISPUTE;

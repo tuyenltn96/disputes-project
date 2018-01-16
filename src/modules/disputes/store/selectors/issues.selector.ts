@@ -28,3 +28,13 @@ export const getIssuesByDisputeId = createSelector(
     fromRoot.getRouterState,
     (issues, router) => issues.filter((issueItem) => issueItem.idDispute === router.state.params.id)
 );
+
+export const getIssuesLoaded = createSelector(
+    getIssueState,
+    fromIssues.getIssuesLoaded
+);
+
+export const getIssuesLoading = createSelector(
+    getIssueState,
+    fromIssues.getIssuesLoading
+);

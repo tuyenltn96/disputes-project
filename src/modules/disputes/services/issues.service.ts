@@ -17,7 +17,7 @@ export class IssuesService {
     }
     createIssue(payload: Issue): Observable<Issue> {
         return this.http
-            .post<Issue>(`http://localhost:3000/issues`, payload)
+            .post<Issue>(`http://localhost:3000/issues?idDispute=${payload.idDispute}`, payload)
             .pipe(catchError((error: any) => Observable.throw(error.json())));
 
     }

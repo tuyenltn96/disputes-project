@@ -4,4 +4,5 @@ export interface Issue {
     id?: string;
     name?: string;
     idDispute?: Dispute;
+    nameDispute?: Dispute;
 }

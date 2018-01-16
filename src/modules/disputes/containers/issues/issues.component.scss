@@ -36,7 +36,6 @@
    
    .header-left {
     display: flex;
-    justify-content: flex-start;
     align-items: center;
    }
 
@@ -51,15 +50,16 @@
     display: flex;
     justify-content: center;
     padding-top: 30px;
+    height: 100%
    }
 
    .material-icons {
-       padding-right: 10px;
        color: white;
    }
 
    .issue_button {
-    width: 130px;
+    background-color: #f6f5f5;
+    width: 100px;
     height: 40px;
    }
 
@@ -67,7 +67,38 @@
     color: black;
    }
 
+   .menu-sidenav {
+       color: black;
+   }
+
    .print_icon {
        color: black;
-       padding-left: 15px;
+       padding-left: 10px;
+   }
+
+   mat-sidenav-container {
+       height: 100%;
+   }
+
+   .body-issue {
+       height: 100%;
+   }
+
+    mat-sidenav {
+        box-shadow: inset -1px -1px 3px #a29c9c;
+    }
+
+   .dispute-return {
+       text-decoration: none;
+       display: flex;
+       justify-content: center;
+       align-items: center;
+   }
+
+   .sidenav-issue {
+       width: 200px;
+   }
+
+   .item-issue {
+       padding: 0 15%;
    }

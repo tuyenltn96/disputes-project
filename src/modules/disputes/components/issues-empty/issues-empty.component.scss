@@ -1,0 +1,19 @@
+.empty-issue {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (min-width: 768px) and (max-width: 1440px) {
+    .image-empty {
+        width: 200px;
+        height: 200px;
+    }
+   }
+   
+   @media (min-width: 320px) and (max-width: 767px) {
+    .image-empty {
+        width: 100px;
+        height: 100px;
+    }
+   }

@@ -1,25 +1,26 @@
 import { Component, OnInit, ChangeDetectionStrategy, Output, EventEmitter } from '@angular/core';
-
+import { MatDialog } from '@angular/material';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
-import * as fromStore from '../../store';
 
+import { v4 as uuid } from 'uuid';
+
+import * as fromStore from '../../store';
 import { Dispute } from '../../models/dispute.model';
-import { MatDialog } from '@angular/material';
-import { toPayload } from '@ngrx/effects/src/util';
+
 import { CreateDialogComponent } from '../../components/create-dialog/create-dialog.component';
 
 @Component({
-  // tslint:disable-next-line:component-selector
-  selector: 'disputes',
+  selector: 'app-disputes',
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './disputes.component.html',
   styleUrls: ['./disputes.component.scss']
 })
 export class DisputesComponent implements OnInit {
-
   disputes$: Observable<Dispute[]>;
+
   constructor(private dialog: MatDialog, private store: Store<fromStore.DisputesState>) { }
+
   ngOnInit() {
     this.disputes$ = this.store.select(fromStore.getAllDisputes);
     this.store.dispatch(new fromStore.LoadDisputes());
@@ -34,6 +35,7 @@ export class DisputesComponent implements OnInit {
       if (result) {
         this.store.dispatch(new fromStore.CreateDisputes(
           {
+            id: uuid(),
             name: result.name,
             date: Date.now().toString()
           }
@@ -41,10 +43,12 @@ export class DisputesComponent implements OnInit {
       }
     });
   }
+
   onRemove(dispute: Dispute) {
     this.store.dispatch(new fromStore.RemoveDispute(dispute));
 
   }
+
   onUpdate(dispute: Dispute) {
     this.store.dispatch(new fromStore.UpdateDispute(dispute));
   }

@@ -20,7 +20,7 @@ export const getSelectedDispute = createSelector(
     getDisputesEntities,
     fromRoot.getRouterState,
     (entilies, router): Dispute => {
-        return router.state && entilies[router.state.params.disputeId];
+        return router.state && entilies[router.state.params.id];
     }
 );
 
@@ -31,12 +31,10 @@ export const getAllDisputes = createSelector(
     }
 );
 
-
 export const getDisputesLoaded = createSelector(
     getDisputeState,
     fromDisputes.getDisputesLoaded
 );
-
 export const getDisputesLoading = createSelector(
     getDisputeState,
     fromDisputes.getDisputesLoading

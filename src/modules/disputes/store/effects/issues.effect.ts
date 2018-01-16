@@ -33,7 +33,9 @@ export class IssuesEffects {
         })
         );
     @Effect()
-    createDispute$ = this.actions$.ofType(issueActions.CREATE_ISSUE).pipe(
+    createIssue$ = this.actions$
+    .ofType(issueActions.CREATE_ISSUE)
+    .pipe(
         map((action: issueActions.CreateIssue) => action.payload),
         switchMap(issues => {
             return this.issueService

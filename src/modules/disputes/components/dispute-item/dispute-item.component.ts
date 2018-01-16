@@ -1,4 +1,4 @@
-import { Component, Input, Output, ChangeDetectionStrategy, EventEmitter } from '@angular/core';
+import { Component, Input, Output, ChangeDetectionStrategy, EventEmitter, state } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material';
 import { Store } from '@ngrx/store';
 
@@ -7,7 +7,8 @@ import { EditDialogComponent } from '../edit-dialog/edit-dialog.component';
 import { DeleteDialogComponent } from '../delete-dialog/delete-dialog.component';
 
 import * as fromStore from '../../store';
-
+import { Observable } from 'rxjs/Observable';
+import { tap } from 'rxjs/operators';
 
 @Component({
     // tslint:disable-next-line:component-selector
@@ -16,7 +17,7 @@ import * as fromStore from '../../store';
     templateUrl: './dispute-item.component.html',
     styleUrls: ['./dispute-item.component.scss']
 })
-export class DisputeItemComponent {
+export class DisputeItemComponent  {
     @Input() dispute: Dispute[];
     @Output() remove = new EventEmitter<any>();
     @Output() update = new EventEmitter<Dispute>();

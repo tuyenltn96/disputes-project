@@ -1,4 +1,4 @@
-<mat-sidenav-container fullscreen>
+<div style="height:100%">
     <div>
         <mat-toolbar color="black" class="header">
             <div class="toolbar">
@@ -19,7 +19,12 @@
         <button mat-fab color="primary" class="btn-create" (click)="openDialogCreate()">
             <mat-icon>add</mat-icon>
         </button>
-        <dispute-item *ngFor="let dispute of (disputes$ | async)" (remove)="onRemove(dispute)" (update)="onUpdate($event)" [dispute]="dispute">
-        </dispute-item>
+        <mat-nav-list style="padding:0 15%" *ngIf="(disputes$ | async)?.length > 0">
+            <dispute-item *ngFor="let dispute of (disputes$ | async)" (remove)="onRemove(dispute)" (update)="onUpdate($event)" [dispute]="dispute">
+                abc</dispute-item>
+        </mat-nav-list>
+        <mat-nav-list *ngIf="(disputes$ | async)?.length == 0">
+            <app-disputes-empty></app-disputes-empty>
+        </mat-nav-list>
     </div>
-</mat-sidenav-container>
+</div>

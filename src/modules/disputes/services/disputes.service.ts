@@ -10,6 +10,7 @@ import { Dispute } from '../../disputes/models/dispute.model';
 @Injectable()
 export class DisputesService {
     constructor(private http: HttpClient) { }
+
     getDisputes(): Observable<Dispute[]> {
         return this.http
             .get<Dispute[]>(`http://localhost:3000/disputes`)
