@@ -1,126 +1,38 @@
 {
   "disputes": [
     {
-      "id": "4cbbb88a-56c8-4810-8b1e-d0dddf815464",
-      "name": "item3",
-      "date": "1515662628101"
+      "id": "f30ff9da-2eb0-411f-81ac-6cb7133ac8fa",
+      "name": "du lich",
+      "date": "1516247350134"
     },
     {
-      "id": "b54737ce-c747-4c95-a42e-7e9327ce9df1",
-      "name": "item1",
-      "date": "1515663408760"
+      "id": "be93ec2d-0cbf-45a6-95b6-81a754acc796",
+      "name": "an uong",
+      "date": "1516250046698"
     },
     {
-      "id": "f69080a2-e089-41cd-82f2-6330159f4218",
-      "name": "item2",
-      "date": "1515727808163"
+      "id": "da5bec99-d9ec-4513-acd2-fa446081d8cf",
+      "name": "tttttttt",
+      "date": "1516272417476"
     }
   ],
   "issues": [
     {
       "idDispute": "1",
-      "name": "issue1",
-      "id": 1
+      "name": "vung tau",
+      "id": 2,
+      "notes": "wwwww"
     },
     {
-      "idDispute": "1",
-      "name": "issue2",
-      "id": 2
-    },
-    {
-      "idDispute": "1",
-      "name": "issue3",
+      "idDispute": "f04e3a5a-de07-49b0-9508-b52d4c618b2a",
+      "name": "ttttttttt",
       "id": 3
     },
     {
-      "idDispute": "b54737ce-c747-4c95-a42e-7e9327ce9df1",
-      "name": "issue1",
-      "id": 4
-    },
-    {
-      "idDispute": "b54737ce-c747-4c95-a42e-7e9327ce9df1",
-      "name": "issue2",
-      "id": 5
-    },
-    {
-      "idDispute": "b54737ce-c747-4c95-a42e-7e9327ce9df1",
-      "name": "issue3",
-      "id": 6
-    },
-    {
-      "idDispute": "10e3f9e7-92d6-4d41-84eb-d4713d377a95",
-      "name": "issue1",
+      "idDispute": "f30ff9da-2eb0-411f-81ac-6cb7133ac8fa",
+      "notes": "ccgcvccgcgcv",
+      "name": "cccccc",
       "id": 7
-    },
-    {
-      "idDispute": "10e3f9e7-92d6-4d41-84eb-d4713d377a95",
-      "name": "rs bae",
-      "id": 8
-    },
-    {
-      "idDispute": "10e3f9e7-92d6-4d41-84eb-d4713d377a95",
-      "name": "rebsrba",
-      "id": 9
-    },
-    {
-      "idDispute": "10e3f9e7-92d6-4d41-84eb-d4713d377a95",
-      "name": "sers",
-      "id": 11
-    },
-    {
-      "idDispute": "10e3f9e7-92d6-4d41-84eb-d4713d377a95",
-      "name": "fefdf",
-      "id": 13
-    },
-    {
-      "idDispute": "10e3f9e7-92d6-4d41-84eb-d4713d377a95",
-      "name": "fefwg",
-      "id": 14
-    },
-    {
-      "idDispute": "10e3f9e7-92d6-4d41-84eb-d4713d377a95",
-      "name": "gfgre",
-      "id": 15
-    },
-    {
-      "idDispute": "4cbbb88a-56c8-4810-8b1e-d0dddf815464",
-      "name": "item",
-      "id": 16
-    },
-    {
-      "idDispute": "4cbbb88a-56c8-4810-8b1e-d0dddf815464",
-      "name": "666634",
-      "id": 17
-    },
-    {
-      "idDispute": "4cbbb88a-56c8-4810-8b1e-d0dddf815464",
-      "name": "5555",
-      "id": 18
-    },
-    {
-      "idDispute": "4cbbb88a-56c8-4810-8b1e-d0dddf815464",
-      "name": "66677",
-      "id": 19
-    },
-    {
-      "idDispute": "4cbbb88a-56c8-4810-8b1e-d0dddf815464",
-      "name": "gvv",
-      "id": 20
-    },
-    {
-      "idDispute": "4cbbb88a-56c8-4810-8b1e-d0dddf815464",
-      "name": "sssd",
-      "id": 21
-    },
-    {
-      "idDispute": "4cbbb88a-56c8-4810-8b1e-d0dddf815464",
-      "name": "dsdsd",
-      "id": 22
-    },
-    {
-      "idDispute": "4cbbb88a-56c8-4810-8b1e-d0dddf815464",
-      "name": "sds",
-      "id": 23
     }
   ]
 }

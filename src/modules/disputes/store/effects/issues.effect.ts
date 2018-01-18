@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 
 import { Effect, Actions, toPayload } from '@ngrx/effects';
+import { Action } from '@ngrx/store';
+
 import { of } from 'rxjs/observable/of';
 import { Observable } from 'rxjs/Observable';
 import { map, switchMap, catchError } from 'rxjs/operators';
 
-import { Action } from '@ngrx/store';
 
 import * as fromRoot from '../../../app/_store';
 import * as issueActions from '../actions/issues.action';

@@ -1,5 +1,5 @@
-import { Component, Inject, Input } from '@angular/core';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { Component  } from '@angular/core';
+import { MatDialog, MatDialogRef } from '@angular/material';
 import { Dispute } from '../../models/dispute.model';
 
 @Component({
@@ -8,11 +8,10 @@ import { Dispute } from '../../models/dispute.model';
 })
 
 export class CreateDialogComponent {
-
     dispute: Dispute = {};
 
-    constructor(
-        public dialogRef: MatDialogRef<CreateDialogComponent>) { }
+    constructor(public dialogRef: MatDialogRef<CreateDialogComponent>) { }
+
     onSubmit() {
         this.dialogRef.close(this.dispute);
     }

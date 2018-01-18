@@ -10,21 +10,15 @@ export const getIssueState = createSelector(
     fromFeature.getDisputesState,
     (state: fromFeature.DisputesState) => state.issues
 );
-
-export const getIssuesEntities = createSelector(
-    getIssueState,
-    fromIssues.getIssuesEntities
-);
-
-export const getAllIssues = createSelector(
-    getIssuesEntities,
-    (entities) => {
-        return Object.keys(entities).map(id => entities[id]);
-    }
-);
+export const {
+    selectIds: selectIssueIds,
+    selectEntities: selectIssueEntities,
+    selectAll: selectAllIssues,
+    selectTotal: selectIssueTotal
+} = fromIssues.adapter.getSelectors(getIssueState);
 
 export const getIssuesByDisputeId = createSelector(
-    getAllIssues,
+    selectAllIssues,
     fromRoot.getRouterState,
     (issues, router) => issues.filter((issueItem) => issueItem.idDispute === router.state.params.id)
 );

@@ -1,16 +1,19 @@
 import { Injectable } from '@angular/core';
 
 import { Effect, Actions, toPayload } from '@ngrx/effects';
+import { Action } from '@ngrx/store';
+
 import { of } from 'rxjs/observable/of';
 import { Observable } from 'rxjs/Observable';
 import { map, switchMap, catchError } from 'rxjs/operators';
 
-import { Action } from '@ngrx/store';
 
 import * as fromRoot from '../../../app/_store';
 import * as disputeActions from '../actions/disputes.action';
 import * as fromServices from '../../services';
 import * as fromComponents from '../../components';
+
+import { Dispute } from '../../models/dispute.model';
 
 
 @Injectable()
@@ -79,7 +82,7 @@ export class DisputesEffects {
             return this.disputeService
                 .updateDispute(dispute)
                 .pipe(
-                map(disputes => new disputeActions.UpdateDisputeSuccess(disputes)),
+                map((res: Dispute) => new disputeActions.UpdateDisputeSuccess(res)),
                 catchError(error => of(new disputeActions.UpdateDisputeFail(error)))
                 );
         })

@@ -1,25 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component} from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { Store } from '@ngrx/store';
+import { ActivatedRoute } from '@angular/router';
 
 import * as fromStore from '../../store';
-import { IssueCreateDialogComponent } from '../../components/issue-create-dialog/issue-create-dialog.component';
-import { ActivatedRoute } from '@angular/router';
+import * as fromComponent from '../../components';
 
 @Component({
   selector: 'app-issues-empty',
   templateUrl: './issues-empty.component.html',
   styleUrls: ['./issues-empty.component.scss']
 })
-export class IssuesEmptyComponent implements OnInit {
+export class IssuesEmptyComponent {
 
-  constructor(private dialog: MatDialog, private store: Store<fromStore.DisputesState>,
+  constructor(
+    private dialog: MatDialog,
+    private store: Store<fromStore.DisputesState>,
     private route: ActivatedRoute) { }
 
-  ngOnInit() {
-  }
   openDialogCreate(): void {
-    const dialogRef = this.dialog.open(IssueCreateDialogComponent, {
+    const dialogRef = this.dialog.open(fromComponent.IssueCreateDialogComponent, {
       width: '330px',
       disableClose: true
     });

@@ -12,16 +12,15 @@
                 </div>
             </div>
         </mat-toolbar>
-        <div class="page-content">
-        </div>
     </div>
     <div class="item-list" style="flex-direction: column">
         <button mat-fab color="primary" class="btn-create" (click)="openDialogCreate()">
             <mat-icon>add</mat-icon>
         </button>
         <mat-nav-list style="padding:0 15%" *ngIf="(disputes$ | async)?.length > 0">
-            <dispute-item *ngFor="let dispute of (disputes$ | async)" (remove)="onRemove(dispute)" (update)="onUpdate($event)" [dispute]="dispute">
-                abc</dispute-item>
+            <app-dispute-item *ngFor="let dispute of (disputes$ | async)"
+             (remove)="onRemove(dispute)" (update)="onUpdate($event)" [dispute]="dispute">
+            </app-dispute-item>
         </mat-nav-list>
         <mat-nav-list *ngIf="(disputes$ | async)?.length == 0">
             <app-disputes-empty></app-disputes-empty>

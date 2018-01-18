@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
-import { ReactiveFormsModule, NgModel, FormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {ScrollToModule} from 'ng2-scroll-to';
@@ -11,8 +11,8 @@ import { EffectsModule } from '@ngrx/effects';
 
 import * as  fromComponents from './components';
 import * as fromContainers from './containers';
-import { effects, reducers } from './store';
 
+import { effects, reducers } from './store';
 import { ROUTES } from '../disputes/disputes.routing';
 
 import * as fromServices from './services';
@@ -39,19 +39,8 @@ import { IssuesEmptyComponent } from './components/issues-empty/issues-empty.com
         ScrollToModule.forRoot()
     ],
     declarations: [
-        fromContainers.DisputesComponent,
-        fromComponents.DisputeItemComponent,
-        fromComponents.DeleteDialogComponent,
-        fromComponents.EditDialogComponent,
-        fromComponents.CreateDialogComponent,
-        fromContainers.IssuesComponent,
-        fromComponents.IssuesItemComponent,
-        fromComponents.IssueDeleteDialogComponent,
-        fromComponents.IssueEditDialogComponent,
-        fromComponents.IssueCreateDialogComponent,
-        fromComponents.SidenavIssueComponent,
-        fromComponents.DisputesEmptyComponent,
-        fromComponents.IssuesEmptyComponent
+        fromContainers.containers,
+        ...fromComponents.components
     ],
     entryComponents: [
         fromComponents.CreateDialogComponent,

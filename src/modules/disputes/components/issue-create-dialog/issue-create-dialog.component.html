@@ -1,13 +1,11 @@
 <h3 mat-dialog-title>Create Issue</h3>
-<form #f= "ngForm" (ngSubmit)="onSubmit()">
-<mat-form-field >
-    <input #input cdkFocusInitial maxlength="50" matInput placeholder="Create Issue" name="name"
-     [(ngModel)]="issue.name" required>
-    <mat-hint align="end">{{input.value?.length || 0}}/50</mat-hint>
-</mat-form-field>
-<mat-dialog-actions  class="button" >
-    <button mat-button  mat-dialog-close>CANCEL</button>
-    <button type="submit" mat-raised-button color="primary" 
-    [mat-dialog-close]="issue" [disabled]="f.invalid">CREATE</button>
-</mat-dialog-actions>
+<form #f="ngForm" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+        <input #input cdkFocusInitial maxlength="50" matInput placeholder="Create Issue" name="name" [(ngModel)]="issue.name" required>
+        <mat-hint align="end">{{input.value?.length || 0}}/50</mat-hint>
+    </mat-form-field>
+    <mat-dialog-actions class="button">
+        <button mat-button mat-dialog-close>CANCEL</button>
+        <button type="submit" mat-raised-button color="primary" [mat-dialog-close]="issue" [disabled]="f.invalid">CREATE</button>
+    </mat-dialog-actions>
 </form>

@@ -31,5 +31,4 @@ export class IssuesService {
             .delete<Issue>(`http://localhost:3000/issues/${payload.id}`)
             .pipe(catchError((error: any) => Observable.throw(error.json())));
     }
-
 }

@@ -1,9 +1,10 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { Issue } from '../../models/issue.model';
-import { IssueEditDialogComponent } from '../issue-edit-dialog/issue-edit-dialog.component';
-import { IssueDeleteDialogComponent } from '../issue-delete-dialog/issue-delete-dialog.component';
 import { ChangeDetectionStrategy } from '@angular/core';
+
+import * as fromComponent from '../../components';
+
 
 @Component({
     selector: 'app-issues-item',
@@ -12,15 +13,20 @@ import { ChangeDetectionStrategy } from '@angular/core';
     styleUrls: ['./issues-item.component.scss']
 })
 export class IssuesItemComponent {
+    creating: false;
+    editting: false;
+    notes: string;
 
-    @Input() issue: Issue[];
+    @Input() issue: Issue;
     @Output() remove = new EventEmitter<any>();
     @Output() update = new EventEmitter<Issue>();
+    @Output() setNotes = new EventEmitter<Issue>();
+
 
     constructor(public dialog: MatDialog) { }
 
     openDialogDelete(): void {
-        const dialogRef = this.dialog.open(IssueDeleteDialogComponent, {
+        const dialogRef = this.dialog.open(fromComponent.IssueDeleteDialogComponent, {
             width: '330px',
             disableClose: true,
             data: { ...this.issue }
@@ -34,7 +40,7 @@ export class IssuesItemComponent {
     }
 
     openDialogEdit(): void {
-        const dialogRef = this.dialog.open(IssueEditDialogComponent, {
+        const dialogRef = this.dialog.open(fromComponent.IssueEditDialogComponent, {
             width: '330px',
             disableClose: true,
             data: { ...this.issue }
@@ -43,6 +49,18 @@ export class IssuesItemComponent {
             if (result) {
                 this.update.emit(result);
             }
+        });
+    }
+    onSaveNotes(notes: string) {
+        this.setNotes.emit({
+            ...this.issue,
+            notes: notes
+        });
+    }
+    onRemoveNotesClicked() {
+        this.setNotes.emit({
+            ...this.issue,
+            notes: ''
         });
     }
 

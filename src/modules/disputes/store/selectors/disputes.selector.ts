@@ -6,30 +6,20 @@ import * as fromDisputes from '../reducers/disputes.reducer';
 
 import { Dispute } from '../../models/dispute.model';
 
+
 export const getDisputeState = createSelector(
     fromFeature.getDisputesState,
     (state: fromFeature.DisputesState) => state.disputes
 );
 
-export const getDisputesEntities = createSelector(
-    getDisputeState,
-    fromDisputes.getDisputesEntities
-);
 
-export const getSelectedDispute = createSelector(
-    getDisputesEntities,
-    fromRoot.getRouterState,
-    (entilies, router): Dispute => {
-        return router.state && entilies[router.state.params.id];
-    }
-);
+export const {
+    selectIds: selectDisputeIds,
+    selectEntities: selectDisputeEntities,
+    selectAll: selectAllDisputes,
+    selectTotal: selectDisputeTotal
+} = fromDisputes.adapter.getSelectors(getDisputeState);
 
-export const getAllDisputes = createSelector(
-    getDisputesEntities,
-    (entities) => {
-        return Object.keys(entities).map(id => entities[id]);
-    }
-);
 
 export const getDisputesLoaded = createSelector(
     getDisputeState,
@@ -38,4 +28,12 @@ export const getDisputesLoaded = createSelector(
 export const getDisputesLoading = createSelector(
     getDisputeState,
     fromDisputes.getDisputesLoading
+);
+
+export const getSelectedDispute = createSelector(
+    selectDisputeEntities,
+    fromRoot.getRouterState,
+    (entilies, router): Dispute => {
+        return router.state && entilies[router.state.params.id];
+    }
 );

@@ -9,6 +9,7 @@ import { IssueDeleteDialogComponent } from './issue-delete-dialog/issue-delete-d
 import { SidenavIssueComponent } from './sidenav-issue/sidenav-issue.component';
 import { DisputesEmptyComponent } from './disputes-empty/disputes-empty.component';
 import { IssuesEmptyComponent } from './issues-empty/issues-empty.component';
+import {NotesIssueComponent} from './notes-issue/notes-issue.component';
 export const components: Array<any> = [
     DisputeItemComponent,
     EditDialogComponent,
@@ -20,7 +21,8 @@ export const components: Array<any> = [
     IssueDeleteDialogComponent,
     SidenavIssueComponent,
     DisputesEmptyComponent,
-    IssuesEmptyComponent
+    IssuesEmptyComponent,
+    NotesIssueComponent
 ];
 
 export * from './dispute-item/dispute-item.component';
@@ -34,3 +36,4 @@ export * from './issue-delete-dialog/issue-delete-dialog.component';
 export * from './sidenav-issue/sidenav-issue.component';
 export * from './disputes-empty/disputes-empty.component';
 export * from './issues-empty/issues-empty.component';
+export * from './notes-issue/notes-issue.component';

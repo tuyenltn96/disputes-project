@@ -1,18 +1,13 @@
-import { Component, Input, Output, ChangeDetectionStrategy, EventEmitter, state } from '@angular/core';
-import { MatDialog, MAT_DIALOG_DATA } from '@angular/material';
+import { Component, Input, Output, ChangeDetectionStrategy, EventEmitter } from '@angular/core';
+import { MatDialog } from '@angular/material';
 import { Store } from '@ngrx/store';
 
 import { Dispute } from '../../models/dispute.model';
-import { EditDialogComponent } from '../edit-dialog/edit-dialog.component';
-import { DeleteDialogComponent } from '../delete-dialog/delete-dialog.component';
-
+import * as fromComponent from '../../components';
 import * as fromStore from '../../store';
-import { Observable } from 'rxjs/Observable';
-import { tap } from 'rxjs/operators';
 
 @Component({
-    // tslint:disable-next-line:component-selector
-    selector: 'dispute-item',
+    selector: 'app-dispute-item',
     changeDetection: ChangeDetectionStrategy.OnPush,
     templateUrl: './dispute-item.component.html',
     styleUrls: ['./dispute-item.component.scss']
@@ -25,7 +20,7 @@ export class DisputeItemComponent  {
     constructor(public dialog: MatDialog, private store: Store<fromStore.DisputesState>) { }
 
     openDialogDelete(): void {
-        const dialogRef = this.dialog.open(DeleteDialogComponent, {
+        const dialogRef = this.dialog.open(fromComponent.DeleteDialogComponent, {
             width: '330px',
             disableClose: true,
             data: { ...this.dispute }
@@ -39,7 +34,7 @@ export class DisputeItemComponent  {
     }
 
     openDialogEdit(): void {
-        const dialogRef = this.dialog.open(EditDialogComponent, {
+        const dialogRef = this.dialog.open(fromComponent.EditDialogComponent, {
             width: '330px',
             disableClose: true,
             data: { ...this.dispute }

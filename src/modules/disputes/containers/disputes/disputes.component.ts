@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
@@ -6,9 +6,10 @@ import { Observable } from 'rxjs/Observable';
 import { v4 as uuid } from 'uuid';
 
 import * as fromStore from '../../store';
+import * as fromselector from '../../store/selectors';
 import { Dispute } from '../../models/dispute.model';
 
-import { CreateDialogComponent } from '../../components/create-dialog/create-dialog.component';
+import * as fromComponent from '../../components';
 
 @Component({
   selector: 'app-disputes',
@@ -22,12 +23,12 @@ export class DisputesComponent implements OnInit {
   constructor(private dialog: MatDialog, private store: Store<fromStore.DisputesState>) { }
 
   ngOnInit() {
-    this.disputes$ = this.store.select(fromStore.getAllDisputes);
+    this.disputes$ = this.store.select(fromStore.selectAllDisputes);
     this.store.dispatch(new fromStore.LoadDisputes());
   }
 
   openDialogCreate(): void {
-    const dialogRef = this.dialog.open(CreateDialogComponent, {
+    const dialogRef = this.dialog.open(fromComponent.CreateDialogComponent, {
       width: '330px',
       disableClose: true
     });
