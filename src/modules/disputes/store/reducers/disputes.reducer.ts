@@ -31,8 +31,8 @@ export function reducer(
         case fromDisputes.LOAD_DISPUTES_SUCCESS: {
             return adapter.addAll(action.payload, {
                 ...state,
-                loaded: false,
-                loading: true
+                loaded: true,
+                loading: false
             });
         }
         case fromDisputes.LOAD_DISPUTES_FAIL: {
@@ -56,6 +56,12 @@ export function reducer(
                 changes: action.payload
             };
             return adapter.updateOne(update, state);
+        }
+        case fromDisputes.SELECT_DISPUTE: {
+            return {
+                ...state,
+                selectedDisputeId: action.payload
+            };
         }
 
         default: {

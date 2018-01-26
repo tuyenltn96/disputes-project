@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material';
 import { Store } from '@ngrx/store';
 
 import * as fromStore from '../../store';
-import * as fromComponent from '../../components';
+import { CreateDialogComponent } from '../create-dialog/create-dialog.component';
 
 @Component({
   selector: 'app-disputes-empty',
@@ -15,7 +15,7 @@ export class DisputesEmptyComponent {
   constructor(private dialog: MatDialog, private store: Store<fromStore.DisputesState>) { }
 
   openDialogCreate(): void {
-    const dialogRef = this.dialog.open(fromComponent.CreateDialogComponent, {
+    const dialogRef = this.dialog.open(CreateDialogComponent, {
       width: '330px',
       disableClose: true
     });

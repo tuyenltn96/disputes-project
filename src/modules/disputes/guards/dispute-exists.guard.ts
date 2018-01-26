@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot } from '@angular/router';
+import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
 import { tap, filter, take, map } from 'rxjs/operators';
@@ -14,6 +14,7 @@ export class DisputeExistsGuard {
 
     canActivate(route: ActivatedRouteSnapshot): Observable<boolean> {
         const disputeId = route.params.id;
+        this.store.dispatch(new fromStore.SelectDispute(disputeId));
         return this.hasDisputeInStore(disputeId);
     }
 

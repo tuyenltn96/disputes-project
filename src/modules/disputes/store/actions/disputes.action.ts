@@ -73,6 +73,13 @@ export class UpdateDisputeSuccess implements Action {
     constructor(public payload: Dispute) { }
 }
 
+export const SELECT_DISPUTE = '[disputes] select Dispute';
+
+export class SelectDispute implements Action {
+    readonly type = SELECT_DISPUTE;
+    constructor(public payload: string) { }
+}
+
 export type DisputesAction =
     | LoadDisputes
     | LoadDisputesFail
@@ -85,4 +92,5 @@ export type DisputesAction =
     | UpdateDisputeSuccess
     | CreateDisputes
     | CreateDisputesFail
-    | CreateDisputesSuccess;
+    | CreateDisputesSuccess
+    | SelectDispute;

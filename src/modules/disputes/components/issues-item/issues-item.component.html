@@ -31,19 +31,19 @@
             </mat-menu>
         </div>
     </mat-card>
-    <mat-card *ngIf="editing" class="note-card">
-        <app-notes-issue class="notes_issue" [notes]="issue.notes" (save)="onSaveNotes($event)"></app-notes-issue>
+    <mat-card *ngIf="editting" class="note-card">
+        <app-notes-issue class="notes_issue" (cancel)="onCancelNotes()" (changeNotes)="onChangeNotes()" [notes]="issue.notes" (save)="onSaveNotes($event)" ></app-notes-issue>
     </mat-card>
     <mat-card *ngIf="creating" class="note-card">
-        <app-notes-issue class="notes_issue" (save)="onSaveNotes($event)"></app-notes-issue>
+        <app-notes-issue class="notes_issue" (cancel)="onCancelNotesCreating()" (save)="onSaveNotes($event)" (changeNotes)="onChangeNotes()"></app-notes-issue>
     </mat-card>
-    <mat-card  *ngIf="issue.notes && !editing" class="note-card">
+    <mat-card  *ngIf="issue.notes && !editting" class="note-card">
         <form class="note_edit">
             <div>
                 <p>{{issue.notes}}</p>
             </div>
-            <div class="note-button" (click)="editing = true">
-                <button type="submit" mat-raised-button color="primary">
+            <div class="note-button" >
+                <button type="submit" mat-raised-button (click)="editting =! editting">
                     Edit
                 </button>
             </div>

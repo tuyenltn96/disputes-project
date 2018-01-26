@@ -31,8 +31,8 @@ export function reducer(
         case fromIssuesAction.LOAD_ISSUES_SUCCESS: {
             return adapter.addAll(action.payload, {
                 ...state,
-                loaded: false,
-                loading: true
+                loaded: true,
+                loading: false
             });
         }
         case fromIssuesAction.LOAD_ISSUES_FAIL: {

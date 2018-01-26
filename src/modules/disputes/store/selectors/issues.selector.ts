@@ -5,6 +5,8 @@ import * as fromFeature from '../reducers';
 import * as fromIssues from '../reducers/issues.reducer';
 
 import { Issue } from '../../models/issue.model';
+import { getSelectedDisputeId } from './disputes.selector';
+import { getSelectedDispute } from '../index';
 
 export const getIssueState = createSelector(
     fromFeature.getDisputesState,
@@ -19,8 +21,10 @@ export const {
 
 export const getIssuesByDisputeId = createSelector(
     selectAllIssues,
-    fromRoot.getRouterState,
-    (issues, router) => issues.filter((issueItem) => issueItem.idDispute === router.state.params.id)
+    getSelectedDisputeId,
+    (issues, id) => {
+        return issues.filter((issueItem) => issueItem.idDispute === id);
+    }
 );
 
 export const getIssuesLoaded = createSelector(

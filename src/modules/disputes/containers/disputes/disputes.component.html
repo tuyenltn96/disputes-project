@@ -1,28 +1,27 @@
 <div style="height:100%">
-    <div>
-        <mat-toolbar color="black" class="header">
-            <div class="toolbar">
-                <div class="header-left">
-                    <img class="image" src="./assets/images/icon.png">
-                    <h1>MISO</h1>
-                </div>
-
-                <div class="dv-btn-logout">
-                    <button class="btn-logout" mat-button (click)="auth.logout()">Logout</button>
-                </div>
+    <mat-toolbar color="black" class="header">
+        <div class="toolbar">
+            <div class="header-left">
+                <img class="image" src="./assets/images/icon.png">
+                <h1>MISO</h1>
             </div>
-        </mat-toolbar>
-    </div>
-    <div class="item-list" style="flex-direction: column">
+            <div class="dv-btn-logout">
+                <button class="btn-logout" mat-button (click)="auth.logout()">Logout</button>
+            </div>
+        </div>
+    </mat-toolbar>
+    <div class="item-list">
         <button mat-fab color="primary" class="btn-create" (click)="openDialogCreate()">
             <mat-icon>add</mat-icon>
         </button>
-        <mat-nav-list style="padding:0 15%" *ngIf="(disputes$ | async)?.length > 0">
-            <app-dispute-item *ngFor="let dispute of (disputes$ | async)"
-             (remove)="onRemove(dispute)" (update)="onUpdate($event)" [dispute]="dispute">
+        <mat-nav-list class="dispute-list" *ngIf="(disputes$ | async)?.length > 0">
+            <app-dispute-item *ngFor="let dispute of (disputes$ | async)" (remove)="onRemove(dispute)" (update)="onUpdate($event)" [dispute]="dispute">
             </app-dispute-item>
+            <div class="spinner">
+                <mat-spinner diameter="30" *ngIf="(loading$ | async) &&  (disputes$ | async)?.length == 0 "></mat-spinner>
+            </div>
         </mat-nav-list>
-        <mat-nav-list *ngIf="(disputes$ | async)?.length == 0">
+        <mat-nav-list *ngIf="!(loading$ | async)&&(disputes$ | async)?.length == 0">
             <app-disputes-empty></app-disputes-empty>
         </mat-nav-list>
     </div>

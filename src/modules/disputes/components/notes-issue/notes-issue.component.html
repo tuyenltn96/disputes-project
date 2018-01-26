@@ -1,13 +1,16 @@
-<form #f="ngForm"  class="note-form">
-  <mat-form-field style="width:100%">
-      <input #notesInput cdkFocusInitial placeholder="Add Notes" matInput type="text" name="notes" [(ngModel)]="notes" required>
-  </mat-form-field>
-  <div class="note-button">
-      <button class="padding-button"  mat-button (click)="onCancel()">
-          Cancel
-      </button>
-      <button type="submit"  mat-raised-button color="primary" cdkFocusInitial [disabled]="f.invalid" (click)="onSave()">
-          Save
-      </button>
-  </div>
+<form #f="ngForm" class="note-form" (change)="onChange()" >
+    <mat-form-field style="width:100%;">
+        <textarea appAutosize  #notesInput #input maxlength="1000" cdkFocusInitial placeholder="Add Notes" matInput type="text" name="notes" [(ngModel)]="notes"
+            required></textarea>
+        <mat-hint align="end">{{input.value?.length || 0}}/1000</mat-hint>
+    </mat-form-field>
+    <div class="note-button">
+        <button class="button" mat-button (click)="onCancel()">
+            Cancel
+        </button>
+        <button type="submit" mat-raised-button cdkFocusInitial [disabled]="f.invalid" (click)="onSave()">
+            Save
+        </button>
+    </div>
 </form>
+

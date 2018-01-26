@@ -30,10 +30,15 @@ export const getDisputesLoading = createSelector(
     fromDisputes.getDisputesLoading
 );
 
+export const getSelectedDisputeId = createSelector(
+    getDisputeState,
+    fromDisputes.getSelectedDisputeId
+);
+
 export const getSelectedDispute = createSelector(
     selectDisputeEntities,
-    fromRoot.getRouterState,
-    (entilies, router): Dispute => {
-        return router.state && entilies[router.state.params.id];
+    getSelectedDisputeId,
+    (entilies, id): Dispute => {
+        return entilies[id];
     }
 );

@@ -4,10 +4,9 @@
       <div class="header-left">
         <a class="dispute-return" routerLink="">
           <i class="material-icons">keyboard_backspace</i>
-          <h1 style="color:white;">{{ (selectedDispute$ | async)?.name }}</h1>
+          <h1>{{ (selectedDispute$ | async)?.name }}</h1>
         </a>
       </div>
-
       <div class="dv-btn-logout">
         <button class="btn-logout" mat-button (click)="auth.logout()">Logout</button>
       </div>
@@ -16,9 +15,11 @@
   <mat-toolbar class="header2">
     <div class="toolbar">
       <div class="header-left">
-        <button [fxHide.gt-sm]="true" mat-icon-button (click)="sidenav.toggle()">
-          <mat-icon class="menu-sidenav">menu</mat-icon>
-        </button>
+        <div *ngIf="(issue$ | async)?.length > 0">
+          <button [fxHide.gt-sm]="true" mat-icon-button (click)="sidenav.toggle()">
+            <mat-icon class="menu-sidenav">menu</mat-icon>
+          </button>
+        </div>
         <h1>Issues</h1>
       </div>
       <div class="header-right">
@@ -29,26 +30,25 @@
       </div>
     </div>
   </mat-toolbar>
-  <div style="height:80.7%" class="body-issue">
-    <mat-sidenav-container>
-      <mat-sidenav class="sidenav-issue" *ngIf="(issue$ | async)?.length > 0" #sidenav opened="true" [mode]="mobileQuery.matches ? 'over' : 'side'">
-        <mat-nav-list role="list" >
+  <div class="body-issue">
+    <mat-sidenav-container style="height:100%">
+      <mat-sidenav class="sidenav-list-issue" #sidenav opened="false" [mode]="mobileQuery.matches ? 'over' : 'side'">
+        <mat-nav-list class="list-issue" role="list" *ngIf="(issue$ | async)?.length > 0">
           <app-sidenav-issue *ngFor="let issue of (issue$ | async)" [issue]="issue"></app-sidenav-issue>
         </mat-nav-list>
       </mat-sidenav>
-      <mat-sidenav-content id="list-issue">
-        <mat-nav-list class="item-issue" *ngIf="(issue$ | async)?.length > 0">
-          <app-issues-item id="issue-{{issue.id}}" *ngFor="let issue of (issue$ | async)"
-           (remove)="onRemove(issue)" 
-           (update)="onUpdate($event)"
-           (setNotes)="onSaveNotes($event)"
-           [issue]="issue"></app-issues-item>
-        </mat-nav-list>
-        <mat-nav-list *ngIf="(issue$ | async)?.length == 0">
+      <mat-sidenav-content class="sidenav-content" id="list-issue">
+        <div class="item-issue" *ngIf="(issue$ | async)?.length > 0">
+          <app-issues-item id="issue-{{issue.id}}" *ngFor="let issue of (issue$ | async)" (remove)="onRemove(issue)" (update)="onUpdate($event)"
+            (setNotes)="onSaveNotes($event)" (changeNotes)="onChangeNotes($event)" [issue]="issue"></app-issues-item>
+        </div>
+        <div class="spinner-dispute">
+          <mat-spinner diameter="30" *ngIf="(loading$ | async) && (issue$ | async)?.length == 0"></mat-spinner>
+        </div>
+        <div *ngIf="!(loading$ | async) && (issue$ | async)?.length == 0">
           <app-issues-empty></app-issues-empty>
-        </mat-nav-list>
+        </div>
       </mat-sidenav-content>
     </mat-sidenav-container>
   </div>
 </div>
-

@@ -11,7 +11,6 @@ export class CreateDialogComponent {
     dispute: Dispute = {};
 
     constructor(public dialogRef: MatDialogRef<CreateDialogComponent>) { }
-
     onSubmit() {
         this.dialogRef.close(this.dispute);
     }

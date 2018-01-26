@@ -18,13 +18,14 @@ import { ROUTES } from '../disputes/disputes.routing';
 import * as fromServices from './services';
 import * as fromGuards from './guards';
 
-import { DeleteDialogComponent } from './components/delete-dialog/delete-dialog.component';
 import { EditDialogComponent } from './components/edit-dialog/edit-dialog.component';
 import { DisputesService } from './services/disputes.service';
 import { SharedModule } from '../shared/shared.module';
 import { SidenavIssueComponent } from './components/sidenav-issue/sidenav-issue.component';
 import { DisputesEmptyComponent } from './components/disputes-empty/disputes-empty.component';
 import { IssuesEmptyComponent } from './components/issues-empty/issues-empty.component';
+import { ConfirmDialogComponent } from '../shared/components/confirm-dialog/confirm-dialog.component';
+import { AutosizeDirective } from './directive';
 
 @NgModule({
     imports: [
@@ -40,15 +41,11 @@ import { IssuesEmptyComponent } from './components/issues-empty/issues-empty.com
     ],
     declarations: [
         fromContainers.containers,
-        ...fromComponents.components
+        ...fromComponents.components,
+        AutosizeDirective
     ],
     entryComponents: [
-        fromComponents.CreateDialogComponent,
-        fromComponents.DeleteDialogComponent,
-        fromComponents.EditDialogComponent,
-        fromComponents.IssueCreateDialogComponent,
-        fromComponents.IssueDeleteDialogComponent,
-        fromComponents.IssueEditDialogComponent
+        fromComponents.entryComponents
     ],
     providers: [...fromServices.service,  ...fromGuards.guards]
 })

@@ -1,10 +1,10 @@
-import { Component} from '@angular/core';
+import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { Store } from '@ngrx/store';
 import { ActivatedRoute } from '@angular/router';
 
 import * as fromStore from '../../store';
-import * as fromComponent from '../../components';
+import { IssueCreateDialogComponent } from '../issue-create-dialog/issue-create-dialog.component';
 
 @Component({
   selector: 'app-issues-empty',
@@ -19,7 +19,7 @@ export class IssuesEmptyComponent {
     private route: ActivatedRoute) { }
 
   openDialogCreate(): void {
-    const dialogRef = this.dialog.open(fromComponent.IssueCreateDialogComponent, {
+    const dialogRef = this.dialog.open(IssueCreateDialogComponent, {
       width: '330px',
       disableClose: true
     });
@@ -30,6 +30,7 @@ export class IssuesEmptyComponent {
           this.store.dispatch(new fromStore.CreateIssue(
             {
               idDispute: disputeId,
+              notes: '',
               name: result.name
             }
           ));

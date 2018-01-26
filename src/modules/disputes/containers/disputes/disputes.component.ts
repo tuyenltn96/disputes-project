@@ -19,11 +19,14 @@ import * as fromComponent from '../../components';
 })
 export class DisputesComponent implements OnInit {
   disputes$: Observable<Dispute[]>;
+  loading$: any;
 
   constructor(private dialog: MatDialog, private store: Store<fromStore.DisputesState>) { }
 
   ngOnInit() {
     this.disputes$ = this.store.select(fromStore.selectAllDisputes);
+    this.loading$ = this.store.select(fromStore.getDisputesLoading);
+
     this.store.dispatch(new fromStore.LoadDisputes());
   }
 
@@ -38,7 +41,7 @@ export class DisputesComponent implements OnInit {
           {
             id: uuid(),
             name: result.name,
-            date: Date.now().toString()
+            date: Date.now().toString(),
           }
         ));
       }

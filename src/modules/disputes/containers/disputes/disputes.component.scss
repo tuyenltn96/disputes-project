@@ -24,10 +24,14 @@
  }
  @media (min-width: 768px) and (max-width: 1440px) {
   .btn-create {
-  top: -30px;
+  top: 35px;
   left: 155px;
-  position: absolute;
+  position: fixed;
   z-index: 2;
+  }
+  .dispute-list{
+    padding: 0 15%;
+    padding-top: 60px;
   }
  }
  
@@ -38,6 +42,10 @@
   position: fixed;
   z-index: 2;
   }
+  .dispute-list{
+    padding: 0 15%;
+    padding-top: 0px;
+  }
  }
  .btn-create:hover {
   background-color: rgb(74, 74, 211);
@@ -46,6 +54,7 @@
  .header {
   background-color: rgb(46, 46, 46);
   color: white;
+  position: fixed;
  }
  
  .header-left {
@@ -60,8 +69,16 @@
  }
  
  .item-list {
-  position: relative;
   display: flex;
   justify-content: center;
-  padding-top: 30px;
+  flex-direction: column;
  }
+ .spinner{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+ }
+ .flex-header{
+  display: flex;
+  flex-direction: column;
+ }  

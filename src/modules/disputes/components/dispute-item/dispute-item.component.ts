@@ -3,8 +3,9 @@ import { MatDialog } from '@angular/material';
 import { Store } from '@ngrx/store';
 
 import { Dispute } from '../../models/dispute.model';
-import * as fromComponent from '../../components';
 import * as fromStore from '../../store';
+import { EditDialogComponent } from '../edit-dialog/edit-dialog.component';
+import { ConfirmDialogComponent } from '../../../shared/components/confirm-dialog/confirm-dialog.component';
 
 @Component({
     selector: 'app-dispute-item',
@@ -12,18 +13,18 @@ import * as fromStore from '../../store';
     templateUrl: './dispute-item.component.html',
     styleUrls: ['./dispute-item.component.scss']
 })
-export class DisputeItemComponent  {
+export class DisputeItemComponent {
     @Input() dispute: Dispute[];
     @Output() remove = new EventEmitter<any>();
     @Output() update = new EventEmitter<Dispute>();
 
     constructor(public dialog: MatDialog, private store: Store<fromStore.DisputesState>) { }
-
     openDialogDelete(): void {
-        const dialogRef = this.dialog.open(fromComponent.DeleteDialogComponent, {
+        const dialogRef = this.dialog.open(ConfirmDialogComponent, {
             width: '330px',
             disableClose: true,
-            data: { ...this.dispute }
+            data: 'Are you sure you want to delete this dispute?'
+
 
         });
         dialogRef.afterClosed().subscribe(result => {
@@ -34,7 +35,7 @@ export class DisputeItemComponent  {
     }
 
     openDialogEdit(): void {
-        const dialogRef = this.dialog.open(fromComponent.EditDialogComponent, {
+        const dialogRef = this.dialog.open(EditDialogComponent, {
             width: '330px',
             disableClose: true,
             data: { ...this.dispute }

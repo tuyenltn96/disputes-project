@@ -1,9 +1,10 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { MatDialog } from '@angular/material';
-import { Issue } from '../../models/issue.model';
 import { ChangeDetectionStrategy } from '@angular/core';
 
-import * as fromComponent from '../../components';
+import { Issue } from '../../models/issue.model';
+import { IssueEditDialogComponent } from '../issue-edit-dialog/issue-edit-dialog.component';
+import { ConfirmDialogComponent } from '../../../shared/components/confirm-dialog/confirm-dialog.component';
 
 
 @Component({
@@ -13,23 +14,21 @@ import * as fromComponent from '../../components';
     styleUrls: ['./issues-item.component.scss']
 })
 export class IssuesItemComponent {
-    creating: false;
-    editting: false;
-    notes: string;
+    creating = false;
+    editting = false;
 
     @Input() issue: Issue;
     @Output() remove = new EventEmitter<any>();
     @Output() update = new EventEmitter<Issue>();
     @Output() setNotes = new EventEmitter<Issue>();
-
+    @Output() changeNotes = new EventEmitter<any>();
 
     constructor(public dialog: MatDialog) { }
-
     openDialogDelete(): void {
-        const dialogRef = this.dialog.open(fromComponent.IssueDeleteDialogComponent, {
+        const dialogRef = this.dialog.open(ConfirmDialogComponent, {
             width: '330px',
             disableClose: true,
-            data: { ...this.issue }
+            data: 'Are you sure you want to delete this issue?'
 
         });
         dialogRef.afterClosed().subscribe(result => {
@@ -40,28 +39,59 @@ export class IssuesItemComponent {
     }
 
     openDialogEdit(): void {
-        const dialogRef = this.dialog.open(fromComponent.IssueEditDialogComponent, {
+        const dialogRef = this.dialog.open(IssueEditDialogComponent, {
             width: '330px',
             disableClose: true,
             data: { ...this.issue }
         });
-        dialogRef.afterClosed().subscribe(result => {
-            if (result) {
+        dialogRef.afterClosed().subscribe((result: Issue) => {
+            if (result && this.issue.name.trim() !== result.name.trim()) {
                 this.update.emit(result);
             }
         });
     }
+
     onSaveNotes(notes: string) {
-        this.setNotes.emit({
-            ...this.issue,
-            notes: notes
-        });
+        if (notes.trim() !== this.issue.notes.trim()) {
+            this.setNotes.emit({
+                ...this.issue,
+                notes: notes
+            });
+        } else {
+            if (this.issue.notes !== '') {
+                this.editting = !this.editting;
+            } else {
+                this.setNotes.emit({
+                    ...this.issue
+                });
+            }
+        }
     }
-    onRemoveNotesClicked() {
-        this.setNotes.emit({
-            ...this.issue,
-            notes: ''
+    onCancelNotes() {
+        this.editting = !this.editting;
+    }
+
+    onCancelNotesCreating() {
+        this.creating = !this.creating;
+    }
+
+    onRemoveNotesClicked(): void {
+        const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+            width: '330px',
+            disableClose: true,
+            data: 'Are you sure you want to delete this nostes ?'
+        });
+        dialogRef.afterClosed().subscribe(result => {
+            if (result === true) {
+                this.setNotes.emit({
+                    ...this.issue,
+                    notes: ''
+                });
+            }
         });
     }
 
+    onChangeNotes() {
+        this.changeNotes.emit(this.issue.id);
+    }
 }
