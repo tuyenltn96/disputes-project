@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { Store } from '@ngrx/store';
 
@@ -11,12 +11,10 @@ import { CreateDialogComponent } from '../../components/create-dialog/create-dia
   templateUrl: './disputes-empty.component.html',
   styleUrls: ['./disputes-empty.component.scss']
 })
-export class DisputesEmptyComponent implements OnInit {
+export class DisputesEmptyComponent {
 
   constructor(private dialog: MatDialog, private store: Store<fromStore.DisputesState>) { }
 
-  ngOnInit() {
-  }
   openDialogCreate(): void {
     const dialogRef = this.dialog.open(CreateDialogComponent, {
       width: '330px',

@@ -5,26 +5,21 @@ import { ReactiveFormsModule, NgModel, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {ScrollToModule} from 'ng2-scroll-to';
+import { effects, reducers } from './store';
 
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+import { SharedModule } from '../shared/shared.module';
+import { DisputesService } from './services/disputes.service';
 
 import * as  fromComponents from './components';
+import * as  fromEntryComponents from './components';
 import * as fromContainers from './containers';
-import { effects, reducers } from './store';
-
-import { ROUTES } from '../disputes/disputes.routing';
-
 import * as fromServices from './services';
 import * as fromGuards from './guards';
+import * as fromDirectives from './directives';
 
-import { DeleteDialogComponent } from './components/delete-dialog/delete-dialog.component';
-import { EditDialogComponent } from './components/edit-dialog/edit-dialog.component';
-import { DisputesService } from './services/disputes.service';
-import { SharedModule } from '../shared/shared.module';
-import { SidenavIssueComponent } from './components/sidenav-issue/sidenav-issue.component';
-import { DisputesEmptyComponent } from './components/disputes-empty/disputes-empty.component';
-import { IssuesEmptyComponent } from './components/issues-empty/issues-empty.component';
+import { ROUTES } from '../disputes/disputes.routing';
 
 @NgModule({
     imports: [
@@ -39,29 +34,14 @@ import { IssuesEmptyComponent } from './components/issues-empty/issues-empty.com
         ScrollToModule.forRoot()
     ],
     declarations: [
-        fromContainers.DisputesComponent,
-        fromComponents.DisputeItemComponent,
-        fromComponents.DeleteDialogComponent,
-        fromComponents.EditDialogComponent,
-        fromComponents.CreateDialogComponent,
-        fromContainers.IssuesComponent,
-        fromComponents.IssuesItemComponent,
-        fromComponents.IssueDeleteDialogComponent,
-        fromComponents.IssueEditDialogComponent,
-        fromComponents.IssueCreateDialogComponent,
-        fromComponents.SidenavIssueComponent,
-        fromComponents.DisputesEmptyComponent,
-        fromComponents.IssuesEmptyComponent
+        ...fromContainers.containers,
+        ...fromComponents.components,
+        ...fromDirectives.directive
     ],
     entryComponents: [
-        fromComponents.CreateDialogComponent,
-        fromComponents.DeleteDialogComponent,
-        fromComponents.EditDialogComponent,
-        fromComponents.IssueCreateDialogComponent,
-        fromComponents.IssueDeleteDialogComponent,
-        fromComponents.IssueEditDialogComponent
+        ...fromEntryComponents.entryComponents
     ],
-    providers: [...fromServices.service,  ...fromGuards.guards]
+    providers: [...fromServices.service,  ...fromGuards.guards, ...fromDirectives.directive]
 })
 export class DisputesModule { }
 

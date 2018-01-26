@@ -1,17 +1,19 @@
+import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
+
 import * as fromDisputes from '../actions/disputes.action';
 import { Dispute } from '../../models/dispute.model';
 
-export interface State {
-    entities: { [id: string]: Dispute };
+export interface State extends EntityState<Dispute> {
+    selectedDisputeId: string | null;
     loaded: boolean;
     loading: boolean;
 }
-
-export const initialState: State = {
-    entities: {},
+export const adapter: EntityAdapter<Dispute> = createEntityAdapter<Dispute>();
+export const initialState: State = adapter.getInitialState({
+    selectedDisputeId: null,
     loaded: false,
     loading: false
-};
+});
 export function reducer(
     state = initialState,
     action: fromDisputes.DisputesAction
@@ -24,25 +26,11 @@ export function reducer(
             };
         }
         case fromDisputes.LOAD_DISPUTES_SUCCESS: {
-            const disputes = action.payload;
-
-            const entities = disputes.reduce(
-                (disputeEntities: { [id: string]: Dispute }, dispute: Dispute) => {
-                    return {
-                        ...disputeEntities,
-                        [dispute.id]: dispute
-                    };
-                },
-                {
-                    ...state.entities,
-                }
-            );
-            return {
+            return adapter.addAll(action.payload, {
                 ...state,
-                loading: false,
                 loaded: true,
-                entities,
-            };
+                loading: false
+            });
         }
         case fromDisputes.LOAD_DISPUTES_FAIL: {
             return {
@@ -53,25 +41,25 @@ export function reducer(
         }
 
         case fromDisputes.REMOVE_DISPUTE_SUCCESS: {
-            const dispute = action.payload;
-            const { [dispute.id]: removed, ...entities } = state.entities;
-            return {
-                ...state,
-                entities,
-            };
+            return adapter.removeOne(action.payload.id, state);
         }
 
-        case fromDisputes.CREATE_DISPUTES_SUCCESS:
-        case fromDisputes.UPDATE_DISPUTE_SUCCESS: {
-            const dispute = action.payload;
-            const entities = {
-                ...state.entities,
-                [dispute.id]: dispute
+        case fromDisputes.CREATE_DISPUTES_SUCCESS: {
+            return adapter.addOne(action.payload, state);
+        }
+        case
+         fromDisputes.UPDATE_DISPUTE_SUCCESS: {
+            const update = {
+                id: action.payload.id,
+                changes: action.payload
             };
+            return adapter.updateOne(update, state);
+        }
 
+        case fromDisputes.SELECT_DISPUTE: {
             return {
                 ...state,
-                entities
+                selectedDisputeId: action.payload
             };
         }
 
@@ -81,6 +69,8 @@ export function reducer(
     }
 }
 
-export const getDisputesEntities = (state: State) => state.entities;
 export const getDisputesLoaded = (state: State) => state.loaded;
 export const getDisputesLoading = (state: State) => state.loading;
+export const getSelectedDisputeId = (state: State) => state.selectedDisputeId;
+
+

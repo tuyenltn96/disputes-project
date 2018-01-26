@@ -1,8 +1,73 @@
-mat-card {
-    height: 25px;
+
+@media (min-width: 1025px) and (max-width: 1440px) {
+    mat-card {
+    width: 700px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 15px;
     margin-top: 15px;
+    border-radius: 0px;
+    padding:15px;    
+    }
+}
+
+@media (min-width: 320px) and (max-width:425px) {
+    mat-card {
+        width: 250px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+        margin-top: 15px;
+        border-radius: 0px;
+        padding:15px;
+    }
+}
+@media (min-width: 426px) and (max-width: 769px) {
+    mat-card {
+        width: 400px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+        margin-top: 15px;
+        border-radius: 0px;
+        padding:15px;
+    }
+}
+@media (min-width: 770px) and (max-width: 1024px) {
+   mat-card {
+    width: 600px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    border-radius: 0px;
+    padding:15px;
+   }
+}
+
+.note-card {
+    margin-top: -14px;
+}
+
+.note-form {
+    width: 100%;
+}
+
+.note-button {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.notes_issue {
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.note_edit {
+    width: 100%;
 }

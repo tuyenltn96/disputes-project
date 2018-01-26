@@ -1,16 +1,18 @@
 import { NgModule } from '@angular/core';
 
 import { AppMaterialModule } from './material-module';
-import { DeleteDialogComponent } from '../disputes/components/delete-dialog/delete-dialog.component';
-
+import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
+import * as  fromComponents from './components';
 
 @NgModule({
-    declarations: [],
+    declarations: [...fromComponents.component],
+    entryComponents: [...fromComponents.component],
     imports: [
         AppMaterialModule
     ],
     exports: [
-        AppMaterialModule
+        AppMaterialModule,
+        ...fromComponents.component
     ],
     providers: [],
 

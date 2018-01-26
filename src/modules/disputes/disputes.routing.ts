@@ -13,6 +13,7 @@ export const ROUTES: Routes = [
     {
         path: ':id/issues',
         canActivate: [fromGuards.DisputeExistsGuard],
-        component: IssuesComponent
+        component: IssuesComponent,
+        canDeactivate: [fromGuards.CanDeactivateGuard]
     }
 ];

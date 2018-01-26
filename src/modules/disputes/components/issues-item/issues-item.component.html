@@ -7,14 +7,44 @@
             <mat-icon>more_vert</mat-icon>
         </button>
         <mat-menu #menu="matMenu">
-            <button mat-menu-item style="color: blue" (click)="openDialogEdit()">
+            <button mat-menu-item (click)="openDialogEdit()">
                 <mat-icon color="primary">mode_edit</mat-icon>
                 <span>Rename</span>
             </button>
-            <button mat-menu-item style="color: red" (click)="openDialogDelete()">
+            <button mat-menu-item (click)="creating = true" *ngIf="!issue.notes">
+                <mat-icon color="primary">speaker_notes</mat-icon>
+                <span>
+                    Add Notes
+                </span>
+            </button>
+            <button mat-menu-item (click)="onRemoveNotesClicked()" *ngIf="issue.notes">
+                <mat-icon color="warn">speaker_notes_off</mat-icon>
+                <span>
+                    Remove Notes
+                </span>
+            </button>
+            <button mat-menu-item (click)="openDialogDelete()">
                 <mat-icon color="warn">delete</mat-icon>
                 <span>Delete</span>
             </button>
         </mat-menu>
     </div>
+</mat-card>
+<mat-card *ngIf="editing" class="note-card">
+    <app-issue-notes-form class="notes_issue" (cancel)="onCancelNotes()" (changeNote)="OnChangeNote()" [notes]="issue.notes" (save)="onSaveNotes($event)"></app-issue-notes-form>
+</mat-card>
+<mat-card *ngIf="creating" class="note-card">
+    <app-issue-notes-form class="notes_issue" (cancel)="onCancelNotesCreating()" (changeNote)="OnChangeNote()" (save)="onSaveNotes($event)"></app-issue-notes-form>
+</mat-card>
+<mat-card *ngIf="issue.notes && !editing" class="note-card">
+    <form class="note_edit">
+        <div>
+            <p>{{issue.notes}}</p>
+        </div>
+        <div class="note-button">
+            <button type="submit" mat-button color="primary" (click)="editing = true">
+                Edit
+            </button>
+        </div>
+    </form>
 </mat-card>

@@ -10,95 +10,127 @@
     }
    }
    
-   h1 {
+h1 {
     font-size: 20px;
-   }
-   
-   .page-content {
+}
+
+.issue-page {
+    height: 100%;
+}
+
+.issue-container {
+    height: 100%;
+}
+
+.page-content {
     width: 100%;
     height: 100%;
     box-sizing: border-box;
-   }
-   
-   .btn-create:hover {
+}
+
+.btn-create:hover {
     background-color: rgb(74, 74, 211);
-   }
-   
-   .header2 {
+}
+
+.header2 {
     background-color: rgb(231, 229, 229);
     color: black;
-   }
+    box-shadow: inset 0px 0 3px 0px #939292;
+}
 
-   .header {
+.header {
     background-color: rgb(31, 29, 29);
     color: white;
-   }
-   
-   .header-left {
+}
+
+.header-left {
     display: flex;
     align-items: center;
-   }
+}
 
-   .header-right {
+.header-right {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-   }
-   
-   .item-list {
+}
+
+.item-list {
     position: relative;
     display: flex;
     justify-content: center;
     padding-top: 30px;
     height: 100%
-   }
+}
 
-   .material-icons {
-       color: white;
-   }
+.material-icons {
+    color: white;
+}
 
-   .issue_button {
+.issue_button {
     background-color: #f6f5f5;
     width: 100px;
     height: 40px;
-   }
+}
 
-   .add_icon {
+.add_icon {
     color: black;
-   }
+}
 
-   .menu-sidenav {
-       color: black;
-   }
+.menu-sidenav {
+    color: black;
+}
 
-   .print_icon {
-       color: black;
-       padding-left: 10px;
-   }
+.print_icon {
+    color: black;
+    padding-left: 10px;
+}
 
-   mat-sidenav-container {
-       height: 100%;
-   }
+mat-sidenav-container {
+    height: 100%;
+}
 
-   .body-issue {
-       height: 100%;
-   }
+.body-issue {
+    height: 80%;
+}
 
-    mat-sidenav {
-        box-shadow: inset -1px -1px 3px #a29c9c;
+.issue-sidenav {
+    width: 200px;
+}
+
+@media (min-width: 320px) and (max-width: 768px) {
+    .issue-sidenav {
+        width: 150px;
     }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+    .issue-sidenav {
+        width: 200px;
+    }
+}
 
-   .dispute-return {
-       text-decoration: none;
-       display: flex;
-       justify-content: center;
-       align-items: center;
-   }
+.example-container {
+    height: 100%;
+}
 
-   .sidenav-issue {
-       width: 200px;
-   }
+.dispute-return {
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-   .item-issue {
-       padding: 0 15%;
-   }
+.spinner-dispute {
+    display: flex;
+    justify-content: center;
+}
+
+mat-drawer {
+    box-shadow: inset -1px -2px 2px 0px #cbc9c9;
+}
+
+mat-drawer-content {
+    display: flex;
+    height: 100%;
+    justify-content: center;
+}
+

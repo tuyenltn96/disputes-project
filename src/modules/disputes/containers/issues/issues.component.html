@@ -1,4 +1,4 @@
-<div *ngIf="issue$" style="height:100%">
+<div *ngIf="issue$" class="issue-page">
   <mat-toolbar color="black" class="header">
     <div class="toolbar">
       <div class="header-left">
@@ -16,7 +16,7 @@
   <mat-toolbar class="header2">
     <div class="toolbar">
       <div class="header-left">
-        <button [fxHide.gt-sm]="true" mat-icon-button (click)="sidenav.toggle()">
+        <button [fxHide.gt-sm]="true" mat-icon-button (click)="drawer.toggle()">
           <mat-icon class="menu-sidenav">menu</mat-icon>
         </button>
         <h1>Issues</h1>
@@ -29,22 +29,28 @@
       </div>
     </div>
   </mat-toolbar>
-  <div style="height:80.7%" class="body-issue">
-    <mat-sidenav-container>
-      <mat-sidenav class="sidenav-issue" #sidenav opened="true" [mode]="mobileQuery.matches ? 'over' : 'side'">
-        <mat-nav-list role="list" *ngIf="(issue$ | async)?.length > 0">
-          <app-sidenav-issue *ngFor="let issue of (issue$ | async)" [issue]="issue"></app-sidenav-issue>
-        </mat-nav-list>
-      </mat-sidenav>
-      <mat-sidenav-content id="list-issue">
+  <div class="body-issue">
+    <mat-drawer-container class="issue-container">
+
+      <mat-drawer #drawer [opened]="false" [mode]="mobileQuery.matches ? 'over' : 'side'">
+          <mat-nav-list class="issue-sidenav" role="list" *ngIf="(issue$ | async)?.length > 0">
+            <app-sidenav-issue *ngFor="let issue of (issue$ | async)" [issue]="issue"></app-sidenav-issue>
+          </mat-nav-list>
+      </mat-drawer>
+
+      <mat-drawer-content id="list-issue">
         <mat-nav-list class="item-issue" *ngIf="(issue$ | async)?.length > 0">
-          <app-issues-item id="issue-{{issue.id}}" *ngFor="let issue of (issue$ | async)" (remove)="onRemove(issue)" (update)="onUpdate($event)" [issue]="issue"></app-issues-item>
+          <app-issues-item id="issue-{{issue.id}}" *ngFor="let issue of (issue$ | async)" (remove)="onRemove(issue)" (update)="onUpdate($event)"
+            (setNotes)="onSaveNotes($event)" (changeNotes)="onChangeNotes($event)" [issue]="issue"></app-issues-item>
         </mat-nav-list>
-        <mat-nav-list *ngIf="(issue$ | async)?.length == 0">
+        <div class="spinner-dispute">
+          <mat-spinner diameter="30" *ngIf="(loading$ | async) && (issue$ | async)?.length == 0"></mat-spinner>
+        </div>
+        <mat-nav-list *ngIf="!(loading$ | async) && (issue$ | async)?.length == 0">
           <app-issues-empty></app-issues-empty>
         </mat-nav-list>
-      </mat-sidenav-content>
-    </mat-sidenav-container>
+      </mat-drawer-content>
+
+    </mat-drawer-container>
   </div>
 </div>
-

@@ -3,30 +3,28 @@ import { createSelector } from '@ngrx/store';
 import * as fromRoot from '../../../app/_store';
 import * as fromFeature from '../reducers';
 import * as fromIssues from '../reducers/issues.reducer';
+import { getSelectedDisputeId } from './disputes.selector';
 
 import { Issue } from '../../models/issue.model';
+import { adapter } from '../reducers/issues.reducer';
 
 export const getIssueState = createSelector(
     fromFeature.getDisputesState,
     (state: fromFeature.DisputesState) => state.issues
 );
-
-export const getIssuesEntities = createSelector(
-    getIssueState,
-    fromIssues.getIssuesEntities
-);
-
-export const getAllIssues = createSelector(
-    getIssuesEntities,
-    (entities) => {
-        return Object.keys(entities).map(id => entities[id]);
-    }
-);
+export const {
+    selectIds: selectIssueIds,
+    selectEntities: selectIssueEntities,
+    selectAll: selectAllIssues,
+    selectTotal: selectIssueTotal
+} = adapter.getSelectors(getIssueState);
 
 export const getIssuesByDisputeId = createSelector(
-    getAllIssues,
-    fromRoot.getRouterState,
-    (issues, router) => issues.filter((issueItem) => issueItem.idDispute === router.state.params.id)
+    selectAllIssues,
+    getSelectedDisputeId,
+    (issues, id) => {
+        return issues.filter((issueItem) => issueItem.idDispute === id );
+    }
 );
 
 export const getIssuesLoaded = createSelector(

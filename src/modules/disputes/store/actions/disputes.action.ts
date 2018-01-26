@@ -59,18 +59,25 @@ export const UPDATE_DISPUTE_FAIL = '[disputes] Update Dispute Fail';
 export const UPDATE_DISPUTE_SUCCESS = '[disputes] Update Dispute Success';
 
 export class UpdateDispute implements Action {
- readonly type = UPDATE_DISPUTE;
- constructor(public payload: Dispute) { }
+    readonly type = UPDATE_DISPUTE;
+    constructor(public payload: Dispute) { }
 }
 
 export class UpdateDisputeFail implements Action {
- readonly type = UPDATE_DISPUTE_FAIL;
- constructor(public payload: any) { }
+    readonly type = UPDATE_DISPUTE_FAIL;
+    constructor(public payload: any) { }
 }
 
 export class UpdateDisputeSuccess implements Action {
- readonly type = UPDATE_DISPUTE_SUCCESS;
- constructor(public payload: Dispute) { }
+    readonly type = UPDATE_DISPUTE_SUCCESS;
+    constructor(public payload: Dispute) { }
+}
+
+export const SELECT_DISPUTE = '[disputes] select Dispute';
+
+export class SelectDispute implements Action {
+    readonly type = SELECT_DISPUTE;
+    constructor(public payload: string) { }
 }
 
 export type DisputesAction =
@@ -85,4 +92,5 @@ export type DisputesAction =
     | UpdateDisputeSuccess
     | CreateDisputes
     | CreateDisputesFail
-    | CreateDisputesSuccess;
+    | CreateDisputesSuccess
+    | SelectDispute;

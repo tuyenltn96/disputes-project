@@ -1,17 +1,22 @@
+import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
+
 import * as fromIssuesAction from '../actions/issues.action';
 import { Issue } from '../../models/issue.model';
 
-export interface State {
-    entities: { [id: string]: Issue };
+export interface State extends EntityState<Issue> {
+    selectedIssueId: string | null;
     loaded: boolean;
     loading: boolean;
 }
 
-export const initialState: State = {
-    entities: {},
+export const adapter: EntityAdapter<Issue> = createEntityAdapter<Issue>();
+
+
+export const initialState: State = adapter.getInitialState({
+    selectedIssueId: null,
     loaded: false,
     loading: false
-};
+});
 export function reducer(
     state = initialState,
     action: fromIssuesAction.IssuesAction
@@ -24,25 +29,11 @@ export function reducer(
             };
         }
         case fromIssuesAction.LOAD_ISSUES_SUCCESS: {
-            const issues = action.payload;
-
-            const entities = issues.reduce(
-                (issueEntities: { [id: string]: Issue }, issue: Issue) => {
-                    return {
-                        ...issueEntities,
-                        [issue.id]: issue
-                    };
-                },
-                {
-                    ...state.entities,
-                }
-            );
-            return {
+            return adapter.addAll(action.payload, {
                 ...state,
-                loading: false,
                 loaded: true,
-                entities,
-            };
+                loading: false
+            });
         }
         case fromIssuesAction.LOAD_ISSUES_FAIL: {
             return {
@@ -53,25 +44,17 @@ export function reducer(
         }
 
         case fromIssuesAction.REMOVE_ISSUE_SUCCESS: {
-            const issue = action.payload;
-            const { [issue.id]: removed, ...entities } = state.entities;
-            return {
-                ...state,
-                entities,
-            };
+            return adapter.removeOne(action.payload.id, state);
         }
-        case fromIssuesAction.CREATE_ISSUE_SUCCESS:
+        case fromIssuesAction.CREATE_ISSUE_SUCCESS: {
+            return adapter.addOne(action.payload, state);
+        }
         case fromIssuesAction.UPDATE_ISSUE_SUCCESS: {
-            const issue = action.payload;
-            const entities = {
-                ...state.entities,
-                [issue.id]: issue
+            const update = {
+                id: action.payload.id,
+                changes: action.payload
             };
-
-            return {
-                ...state,
-                entities
-            };
+            return adapter.updateOne(update, state);
         }
 
         default: {
@@ -80,8 +63,9 @@ export function reducer(
     }
 }
 
-export const getIssuesEntities = (state: State) => state.entities;
 export const getIssuesLoaded = (state: State) => state.loaded;
 export const getIssuesLoading = (state: State) => state.loading;
+export const getSelectedIssueId = (state: State) => state.selectedIssueId;
+
 
 

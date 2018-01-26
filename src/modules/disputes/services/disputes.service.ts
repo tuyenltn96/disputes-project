@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
 import { Observable } from 'rxjs/Observable';
 import { catchError } from 'rxjs/operators';
-import 'rxjs/add/observable/throw';
+import 'rxjs/add/operator/delay';
 
 import { Dispute } from '../../disputes/models/dispute.model';
 
@@ -14,6 +13,7 @@ export class DisputesService {
     getDisputes(): Observable<Dispute[]> {
         return this.http
             .get<Dispute[]>(`http://localhost:3000/disputes`)
+            .delay(3000)
             .pipe(catchError((error: any) => Observable.throw(error.json())));
     }
     createDispute(payload: Dispute): Observable<Dispute> {

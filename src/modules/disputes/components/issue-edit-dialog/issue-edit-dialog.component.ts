@@ -1,5 +1,6 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+
 import { Issue } from '../../models/issue.model';
 
 @Component({
@@ -13,8 +14,8 @@ export class IssueEditDialogComponent {
     public dialogRef: MatDialogRef<IssueEditDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public issue: Issue) { }
 
-onSubmit() {
+  onSubmit() {
     this.dialogRef.close(this.issue);
-}
+  }
 
 }

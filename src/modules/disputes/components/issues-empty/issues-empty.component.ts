@@ -1,23 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material';
+import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 
 import * as fromStore from '../../store';
 import { IssueCreateDialogComponent } from '../../components/issue-create-dialog/issue-create-dialog.component';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-issues-empty',
   templateUrl: './issues-empty.component.html',
   styleUrls: ['./issues-empty.component.scss']
 })
-export class IssuesEmptyComponent implements OnInit {
+export class IssuesEmptyComponent {
 
   constructor(private dialog: MatDialog, private store: Store<fromStore.DisputesState>,
     private route: ActivatedRoute) { }
 
-  ngOnInit() {
-  }
   openDialogCreate(): void {
     const dialogRef = this.dialog.open(IssueCreateDialogComponent, {
       width: '330px',
@@ -30,7 +28,8 @@ export class IssuesEmptyComponent implements OnInit {
           this.store.dispatch(new fromStore.CreateIssue(
             {
               idDispute: disputeId,
-              name: result.name
+              name: result.name,
+              notes: ''
             }
           ));
         });

@@ -1,5 +1,6 @@
-import { Component, Inject, Input } from '@angular/core';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { Component } from '@angular/core';
+import { MatDialogRef } from '@angular/material';
+
 import { Dispute } from '../../models/dispute.model';
 
 @Component({
