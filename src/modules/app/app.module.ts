@@ -13,16 +13,15 @@ import * as fromContainers from './containers';
 import { reducers, effects, CustomSerializer } from './_store';
 import { ROUTES } from './app.routing';
 import { environment } from '../../environments/environment';
+import { HttpClientModule } from '@angular/common/http';
 
 export const metaReducers: MetaReducer<any>[] = !environment.production ? [storeFreeze] : [];
 
 
 @NgModule({
-  declarations: [
-    ...fromContainers.containers
-  ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(ROUTES),
 
@@ -36,6 +35,9 @@ export const metaReducers: MetaReducer<any>[] = !environment.production ? [store
     {
       provide: RouterStateSerializer, useClass: CustomSerializer
     }
+  ],
+  declarations: [
+    ...fromContainers.containers
   ],
   bootstrap: [fromContainers.AppComponent]
 })
