@@ -5,6 +5,7 @@
   },
   "apps": [
     {
+      "appRoot": "modules",
       "root": "src",
       "outDir": "dist",
       "assets": [

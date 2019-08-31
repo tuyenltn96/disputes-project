@@ -1,0 +1,104 @@
+.mat-toolbar {
+.mat-icon {
+    cursor: pointer;
+    }
+    .toolbar { 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    }
+   }
+   
+   h1 {
+    font-size: 20px;
+   }
+   
+   .page-content {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+   }
+   
+   .btn-create:hover {
+    background-color: rgb(74, 74, 211);
+   }
+   
+   .header2 {
+    background-color: rgb(231, 229, 229);
+    color: black;
+   }
+
+   .header {
+    background-color: rgb(31, 29, 29);
+    color: white;
+   }
+   
+   .header-left {
+    display: flex;
+    align-items: center;
+   }
+
+   .header-right {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+   }
+   
+   .item-list {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    padding-top: 30px;
+    height: 100%
+   }
+
+   .material-icons {
+       color: white;
+   }
+
+   .issue_button {
+    background-color: #f6f5f5;
+    width: 100px;
+    height: 40px;
+   }
+
+   .add_icon {
+    color: black;
+   }
+
+   .menu-sidenav {
+       color: black;
+   }
+
+   .print_icon {
+       color: black;
+       padding-left: 10px;
+   }
+
+   mat-sidenav-container {
+       height: 100%;
+   }
+
+   .body-issue {
+       height: 100%;
+   }
+
+    mat-sidenav {
+        box-shadow: inset -1px -1px 3px #a29c9c;
+    }
+
+   .dispute-return {
+       text-decoration: none;
+       display: flex;
+       justify-content: center;
+       align-items: center;
+   }
+
+   .sidenav-issue {
+       width: 200px;
+   }
+
+   .item-issue {
+       padding: 0 15%;
+   }

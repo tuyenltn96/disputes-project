@@ -1,0 +1,12 @@
+<h3 mat-dialog-title>Edit Dispute</h3>
+<form  #f= "ngForm"(ngSubmit)="onSubmit()">
+    <mat-form-field >
+        <input #input maxlength="50" cdkFocusInitial matInput placeholder="Name" name="name" [(ngModel)]="dispute.name" required>
+        <mat-hint align="end">{{input.value?.length || 0}}/50</mat-hint>
+    </mat-form-field>
+    <div class="button" mat-dialog-actions>
+        <button type="button" mat-button mat-dialog-close>CANCEL</button>
+        <button type="submit" mat-raised-button color="primary" cdkFocusInitial [disabled]="f.invalid"
+        >OK</button>
+    </div>
+</form>

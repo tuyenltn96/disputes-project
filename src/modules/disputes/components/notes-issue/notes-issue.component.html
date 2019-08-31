@@ -1,0 +1,13 @@
+<form #f="ngForm"  class="note-form">
+  <mat-form-field style="width:100%">
+      <input #notesInput cdkFocusInitial placeholder="Add Notes" matInput type="text" name="notes" [(ngModel)]="notes" required>
+  </mat-form-field>
+  <div class="note-button">
+      <button class="padding-button"  mat-button (click)="onCancel()">
+          Cancel
+      </button>
+      <button type="submit"  mat-raised-button color="primary" cdkFocusInitial [disabled]="f.invalid" (click)="onSave()">
+          Save
+      </button>
+  </div>
+</form>

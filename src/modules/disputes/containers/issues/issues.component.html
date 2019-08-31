@@ -1,0 +1,54 @@
+<div *ngIf="issue$" style="height:100%">
+  <mat-toolbar color="black" class="header">
+    <div class="toolbar">
+      <div class="header-left">
+        <a class="dispute-return" routerLink="">
+          <i class="material-icons">keyboard_backspace</i>
+          <h1 style="color:white;">{{ (selectedDispute$ | async)?.name }}</h1>
+        </a>
+      </div>
+
+      <div class="dv-btn-logout">
+        <button class="btn-logout" mat-button (click)="auth.logout()">Logout</button>
+      </div>
+    </div>
+  </mat-toolbar>
+  <mat-toolbar class="header2">
+    <div class="toolbar">
+      <div class="header-left">
+        <button [fxHide.gt-sm]="true" mat-icon-button (click)="sidenav.toggle()">
+          <mat-icon class="menu-sidenav">menu</mat-icon>
+        </button>
+        <h1>Issues</h1>
+      </div>
+      <div class="header-right">
+        <button class="issue_button" mat-raised-button (click)="openDialogCreate()">
+          NEW ISSUE
+        </button>
+        <i class="material-icons print_icon">print</i>
+      </div>
+    </div>
+  </mat-toolbar>
+  <div style="height:80.7%" class="body-issue">
+    <mat-sidenav-container>
+      <mat-sidenav class="sidenav-issue" *ngIf="(issue$ | async)?.length > 0" #sidenav opened="true" [mode]="mobileQuery.matches ? 'over' : 'side'">
+        <mat-nav-list role="list" >
+          <app-sidenav-issue *ngFor="let issue of (issue$ | async)" [issue]="issue"></app-sidenav-issue>
+        </mat-nav-list>
+      </mat-sidenav>
+      <mat-sidenav-content id="list-issue">
+        <mat-nav-list class="item-issue" *ngIf="(issue$ | async)?.length > 0">
+          <app-issues-item id="issue-{{issue.id}}" *ngFor="let issue of (issue$ | async)"
+           (remove)="onRemove(issue)" 
+           (update)="onUpdate($event)"
+           (setNotes)="onSaveNotes($event)"
+           [issue]="issue"></app-issues-item>
+        </mat-nav-list>
+        <mat-nav-list *ngIf="(issue$ | async)?.length == 0">
+          <app-issues-empty></app-issues-empty>
+        </mat-nav-list>
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+  </div>
+</div>
+
